@@ -167,7 +167,7 @@ operation* controller::createOperation(operationType OpType)
 
 
 		case MULTISELECTION : 
-			pOp = new MULTISELECT(this, multiSelect);
+			pOp = new MULTISELECT(this);
 			break; 
 
 		case SEND_BACK :
