@@ -15,6 +15,34 @@ polygon::polygon(Point p1, Point p2, int i, GfxInfo shapeGfxInfo) :shape(shapeGf
 }
 polygon::~polygon()
 {}
+
+int* polygon::Getshapeinfo()
+{
+	int arr[4];
+	arr[0] = x[0];// get x
+	arr[1] = y[1];//get y
+	arr[2] = sqrt(pow((x[1] - x[0]), 2) + (pow((y[1] - y[0]), 2)));//get width
+	arr[3] = sqrt(pow((x[1] - x[0]), 2) + (pow((y[1] - y[0]), 2)));// get height
+	return arr;
+}
+
+polygon::polygon(const polygon* copy) :shape(copy->ShpGfxInfo)
+{
+	this->center = copy->center;
+	this->point1= copy->point1;
+	this->num = copy->num;
+	this->distance = copy->distance;
+	this->ID = copy->ID;
+
+}
+
+shape* polygon::clone()
+{
+	shape* newShape = new polygon(*this);
+
+	return newShape;
+}
+
 void polygon::Draw(GUI* pUI) const
 {
 	if (num == 4) {
@@ -102,18 +130,7 @@ void polygon::Load(ifstream& Infile)
 	Infile >> info.DrawClr.ucRed;
 }
 
-shape* polygon::copy() 
-{
-	shape* ptr= new polygon(center, point1, num, ShpGfxInfo);
-	return ptr;
-}
-
-shape* polygon::Paste(Point) //just to run
-{
-	shape* ptr=NULL;
-	return ptr;
-}
-bool polygon::point_included(int x, int y) //just to run
+bool polygon::point_included(int x, int y) 
 {
 	double area = 0;
 	int j = num - 1;

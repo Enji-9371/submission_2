@@ -56,8 +56,8 @@ class GUI
 		ICON_ZOOMOUT,   //zoom out the whole screen
 		ICON_GROUP,     //group shapes
 		ICON_UNGROUP,    //ungroup shapes
+		ICON_SIMAGE,         //stick image icon in menu
 		ICON_RESIZE_GROUP,  //resize a group of shapes
-
 		ICON_LOAD,      // Load icon in menu
 		ICON_SAVE,      // Save icon in menu
 		ICON_MOVEBYDRAG,
@@ -182,6 +182,8 @@ public:
 	void setCrntFillColor(operationType fcolor);	//set current filling color
 	void setCrntPenWidth(int width);		//set current pen width
 	bool SetResized(); //set resized
+	void StickImage(string photo, int x, int y, int width, int height) const;
+
 	~GUI();
 };
 

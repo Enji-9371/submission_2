@@ -19,6 +19,35 @@ Line::Line(Point P1, Point P2, GfxInfo shapeGfxInfo):shape(shapeGfxInfo)
 Line::~Line()
 {}
 
+int* Line::Getshapeinfo()
+{
+	int arr[11];
+	if (Corner1.y < Corner2.y || Corner1.x < Corner2.x) {
+		arr[0] = Corner1.x - 5;
+		arr[1] = Corner1.y - 2;
+		arr[2] = Corner1.x - 5;
+		arr[3] = Corner1.y - 5;
+
+	}
+	else
+	{
+		arr[0] = Corner2.x - 5;
+		arr[1] = Corner2.y - 2;
+		arr[2] = Corner1.x - 5;
+		arr[3] = Corner1.y - 5;
+
+	}
+	arr[4] = sqrt(pow((Corner2.x - Corner1.x), 2) + (pow((Corner2.y - Corner1.y), 2)));//get width
+	arr[5] = sqrt(pow((Corner2.x - Corner1.x), 2) + (pow((Corner2.y - Corner1.y), 2)));// get height
+	arr[7] = Corner1.x;
+	arr[8] = Corner1.y;
+	arr[9] = Corner2.x;
+	arr[10] = Corner2.y;
+	return arr;
+}
+
+
+
 void Line::Save(ofstream& OutFile)
 {
 
@@ -45,10 +74,13 @@ void Line::Draw(GUI* pUI) const
 
 }
 
-shape* Line::copy()
+Line::Line(const Line* copy) :shape(copy->ShpGfxInfo)
 {
-	shape* ptr = new Line (Corner1, Corner2, ShpGfxInfo);
-	return ptr;
+	this->Corner1 = copy->Corner1;
+	this->Corner2 = copy->Corner2;
+	this->ID = copy->ID;
+
+
 }
 
 void Line::Move(Point P)
@@ -67,21 +99,13 @@ void Line::Move(Point P)
 
 }
 
-
-
-shape* Line::Paste(Point p)
+shape* Line::clone()
 {
-	Line* line = new  Line(Corner1, Corner2, ShpGfxInfo);
+	shape* newShape = new Line(*this);
 
-	Point oo;
-	oo.x = (Corner1.x + Corner2.x) / 2;
-	oo.y = (Corner1.y + Corner2.y) / 2;
-	line->Corner1.x = p.x - oo.x + Corner1.x;
-	line->Corner1.y = p.y - oo.y + Corner1.y;
-	line->Corner2.x = p.x - oo.x + Corner2.x;
-	line->Corner2.y = p.y - oo.y + Corner2.y;
-	return line;
+	return newShape;
 }
+
 
 bool Line::point_included(int x, int y) {
 	double slope = (Corner2.y - Corner1.y) / (Corner2.x - Corner1.x);

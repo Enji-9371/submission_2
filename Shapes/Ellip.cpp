@@ -16,6 +16,47 @@ Ellip::Ellip(Point P1, Point P2, GfxInfo shapeGfxInfo) :shape(shapeGfxInfo)
 Ellip::~Ellip()
 {}
 
+
+int* Ellip::Getshapeinfo()
+{
+	int arr[6];
+	if (Corner1.y < Corner2.y) {
+		arr[0] = Corner1.x;
+		arr[1] = Corner1.y;
+		arr[2] = Corner2.x - 1;
+		arr[3] = Corner2.y - 1;
+	}
+	else
+	{
+		arr[0] = Corner2.x - 1;
+		arr[1] = Corner2.y - 1;
+		arr[2] = Corner1.x;
+		arr[3] = Corner1.y;
+	}
+	arr[4] = sqrt(pow((Corner2.x - Corner1.x), 2) + (pow((Corner2.y - Corner1.y), 2)));
+	arr[5] = sqrt(pow((Corner2.x - Corner1.x), 2) + (pow((Corner2.y - Corner1.y), 2)));
+	return arr;
+}
+
+
+Ellip::Ellip(const Ellip* copy) :shape(copy->ShpGfxInfo)
+{
+	this->Corner1 = copy->Corner1;
+	this->Corner2 = copy->Corner2;
+	this->Center.x = copy->Center.x;
+	this->Center.y = copy->Center.y;
+	this->ID = copy->ID;
+}
+
+
+shape* Ellip::clone()
+{
+	shape* newShape = new Ellip(*this);
+
+	return newShape;
+}
+
+
 void Ellip::Save(ofstream& outFile)
 {
 	string DrawColor;
@@ -59,25 +100,6 @@ void Ellip::Draw(GUI* pUI) const
 	pUI->DrawEllip(Corner1, Corner2, ShpGfxInfo);
 }
 
-shape* Ellip::copy()
-{
-	shape* ptr = new  Ellip(Corner1, Corner2, ShpGfxInfo);
-	return ptr;
-}
-
-shape* Ellip::Paste(Point p)
-{
-	Ellip* ellip = new  Ellip(Corner1, Corner2, ShpGfxInfo);
-
-	Point oo;
-	oo.x = (Corner1.x + Corner2.x) / 2;
-	oo.y = (Corner1.y + Corner2.y) / 2;
-	ellip->Corner1.x = p.x - oo.x + Corner1.x;
-	ellip->Corner1.y = p.y - oo.y + Corner1.y;
-	ellip->Corner2.x = p.x - oo.x + Corner2.x;
-	ellip->Corner2.y = p.y - oo.y + Corner2.y;
-	return ellip;
-}
 bool Ellip::point_included(int x, int y)
 {
 	return true;

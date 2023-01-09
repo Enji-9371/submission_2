@@ -14,6 +14,28 @@ Squr::Squr(Point P1, Point P2, GfxInfo shapeGfxInfo) :shape(shapeGfxInfo)
 }
 
 
+int* Squr::Getshapeinfo()
+{
+	int arr[6];
+	if (Corner1.y < Corner2.y) {
+		arr[0] = Corner1.x;
+		arr[1] = Corner1.y;
+		arr[2] = Corner2.x - 1;
+		arr[3] = Corner2.y - 1;
+	}
+	else
+	{
+		arr[0] = Corner2.x - 1;
+		arr[1] = Corner2.y - 1;
+		arr[2] = Corner1.x;
+		arr[3] = Corner1.y;
+	}
+	arr[4] = sqrt(pow((Corner2.x - Corner1.x), 2) + (pow((Corner2.y - Corner1.y), 2)));
+	arr[5] = sqrt(pow((Corner2.x - Corner1.x), 2) + (pow((Corner2.y - Corner1.y), 2)));
+	return arr;
+}
+
+
 void Squr::Move(Point P)
 {
 	double CenterX = (Corner1.x + Corner2.x) / 2;
@@ -41,19 +63,12 @@ void Squr::Save(ofstream& OutFile)
 	OutFile << " " << to_string(ShpGfxInfo.FillClr.ucRed) << " " << to_string(ShpGfxInfo.FillClr.ucGreen) << " " << to_string(ShpGfxInfo.FillClr.ucBlue) << " " << to_string(ShpGfxInfo.DrawClr.ucRed) << " " << to_string(ShpGfxInfo.DrawClr.ucGreen) << " " << to_string(ShpGfxInfo.DrawClr.ucBlue) << " " << (ShpGfxInfo.BorderWdth) << endl;
 }
 
-shape* Squr::Paste(Point p)
+shape* Squr::clone()
 {
-	Squr*squr = new  Squr(Corner1, Corner2, ShpGfxInfo);
-
-	Point oo;
-	oo.x = (Corner1.x + Corner2.x) / 2;
-	oo.y = (Corner1.y + Corner2.y) / 2;
-	squr->Corner1.x = p.x - oo.x + Corner1.x;
-	squr->Corner1.y = p.y - oo.y + Corner1.y;
-	squr->Corner2.x = p.x - oo.x + Corner2.x;
-	squr->Corner2.y = p.y - oo.y + Corner2.y;
-	return squr;
+	shape* newShape = new Squr(*this);
+	return newShape;
 }
+
 
 void Squr::Load(ifstream& Infile)
 {
@@ -77,10 +92,11 @@ void Squr::Draw(GUI* pUI) const
 	pUI->DrawSqur(Corner1, Corner2, ShpGfxInfo);
 }
 
-shape* Squr::copy()
+Squr::Squr(const Squr* copy) :shape(copy->ShpGfxInfo)
 {
-	shape* ptr = new  Squr(Corner1, Corner2, ShpGfxInfo);
-	return ptr;
+	this->Corner1 = copy->Corner1;
+	this->Corner2 = copy->Corner2;
+	this->ID = copy->ID;
 }
 
 bool Squr::point_included(int x, int y) {

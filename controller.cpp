@@ -30,6 +30,7 @@
 #include "GUI/GUI.h"
 #include "opSelect.h"
 #include "operations/opdelete.h"
+#include "operations/Stick_Image.h"
 //Constructor
 controller::controller()
 {
@@ -135,6 +136,10 @@ operation* controller::createOperation(operationType OpType)
 
 		case UNGROUP:   //ungroup
 			pOp = new opUngroup(this);
+			break;
+
+		case STICK:
+			pOp = new Stick_Image(this);
 			break;
 
 		case SelctedInfo:   //change selected info 

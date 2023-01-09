@@ -18,6 +18,7 @@ enum operationType //The operations supported (you can add more if needed)
 	CHNG_FILL_CLR,	//Change the filling color
 	CHNG_BK_CLR,	//Change background color
 	DEL,			//Delete a shape(s)
+	STICK,          //Stick an image(s)
 	MOVE,			//Move a shape(s)
 	RESIZE,			//Resize a shape(s)
 	ROTATE,			//Rotate a shape(s)

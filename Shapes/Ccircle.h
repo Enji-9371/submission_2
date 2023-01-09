@@ -18,9 +18,10 @@ public:
 	virtual void Save(ofstream& OutFile);
 	void Load(ifstream& Infile);
 	virtual void Draw(GUI* pUI) const;
-	virtual shape* copy();
-	virtual shape* Paste(Point);
 	virtual void Move(Point P);
+	Ccircle(const Ccircle* copy);
+	int* Getshapeinfo();
+	virtual shape* clone();
 	virtual shape* duplicate(GUI* pGUI);
 	void OPZOOM(double px, double py, double scale);
 	void ResizeShape(double scale);  	//Resize a single circle

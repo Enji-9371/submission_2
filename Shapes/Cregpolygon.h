@@ -9,6 +9,8 @@ private:
 	double distance;
 	int* arrayX = new int[num];
 	int* arrayY = new int[num];
+	int* x = nullptr;
+	int* y = nullptr;
 
 public:
 	polygon(Point, Point, int, GfxInfo shapeGfxInfo);
@@ -17,10 +19,11 @@ public:
 	void Save(ofstream& OutFile);
 	void Load(ifstream& Infile);
 	virtual shape* duplicate(GUI* pGUI);
-	virtual shape* copy();
-	virtual shape* Paste(Point);
+	polygon(const polygon* copy);
+	virtual shape* clone();
 	virtual void Move(Point P);
 	virtual bool point_included(int x, int y);
+	int* Getshapeinfo();
 	void OPZOOM(double px, double py, double scale);
 	void ResizeShape(double scale);  	//Resize a single ellipse
 	void RotateShape();  	//Rotate a single ellipse

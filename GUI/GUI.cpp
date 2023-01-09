@@ -120,8 +120,8 @@ operationType GUI::GetUseroperation() const
 			case ICON_SELINFO: return SelctedInfo;  break;
 			case ICON_SENDTOBACK: return SEND_BACK;  break;
 			case  ICON_DELETE: return DEL;  break;
-			
 			case ICON_DUPLICATE: return DUPLICATED;  break;
+			case ICON_SIMAGE: return STICK; break;
 			default: return EMPTY;	//A click on empty place in desgin toolbar
 			}
 		}
@@ -250,6 +250,8 @@ void GUI::CreateDrawToolBar()
 	MenuIconImages[ICON_SENDTOBACK] = "images\\MenuIcons\\sendtoback.jpg";
 	MenuIconImages[ICON_DUPLICATE] = "images\\MenuIcons\\duplicate.jpg";
 	MenuIconImages[ICON_DELETE] = "images\\MenuIcons\\DELETE.jpg";
+	MenuIconImages[ICON_SIMAGE] = "images\\MenuIcons\\image.jpg";
+
 	//TODO: Prepare images for each menu icon and add it to the list
 
 	//Draw menu icon one image at a time
@@ -549,6 +551,12 @@ void GUI::DrawEllip(Point P1, Point P2, GfxInfo EllipGfxInfo) const
 		style = FRAME;
 
 	pWind->DrawEllipse(P1.x, P1.y, P2.x, P2.y, style);
+
+}
+
+void GUI::StickImage(string photo, int x, int y, int width, int height) const
+{
+	pWind->DrawImage(photo, x, y, width, height);
 
 }
 

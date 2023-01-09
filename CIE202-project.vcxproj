@@ -151,6 +151,7 @@
     <ClCompile Include="operations\Group.cpp" />
     <ClCompile Include="operations\SendToBack.cpp" />
     <ClCompile Include="operations\START.cpp" />
+    <ClCompile Include="operations\Stick_Image.cpp" />
     <ClCompile Include="operations\SwitchToDraw.cpp" />
     <ClCompile Include="operations\SwitchToPlay.cpp" />
     <ClCompile Include="operations\Ungroup.cpp" />
@@ -230,6 +231,7 @@
     <ClInclude Include="operations\Rotate.h" />
     <ClInclude Include="operations\SendToBack.h" />
     <ClInclude Include="operations\START.h" />
+    <ClInclude Include="operations\Stick_Image.h" />
     <ClInclude Include="operations\SwitchToDraw.h" />
     <ClInclude Include="operations\SwitchToPlay.h" />
     <ClInclude Include="operations\Ungroup.h" />

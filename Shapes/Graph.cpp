@@ -22,6 +22,51 @@ void Graph::Addshape(shape* pShp)
 	shapesList.push_back(pShp);	
 }
 
+void Graph::setCopied(shape* copied) {
+	copiedShape = copied;
+}
+
+shape* Graph::getCopied() {
+	return copiedShape;
+}
+
+void Graph::clearClipboard()
+{
+	clipboard.clear();
+
+}
+
+void Graph::copy()
+{
+	for (int i = 0; i < shapesList.size(); i++) {
+		if (shapesList[i]->IsSelected()) {
+			clipboard.push_back(shapesList[i]);
+		}
+	}
+
+	UnselectShapes();
+}
+
+void Graph::paste(Point p)
+
+{
+	if (!clipboard.empty()) {
+
+		for (int i = 0; i < clipboard.size(); i++) {
+
+			shape* newShape = clipboard[i]->clone();
+			newShape->Move(p);
+			shapesList.push_back(newShape);
+
+		}
+		clearClipboard();
+	}
+	UnselectShapes();
+
+
+}
+
+
 shape* Graph::GetSelected()
 {
 	return selectedShape;
@@ -31,8 +76,13 @@ shape* Graph::GetSelected()
 void Graph::Draw(GUI* pUI) const
 {
 	pUI->ClearDrawArea();
-	for (auto shapePointer : shapesList)
+	for (auto shapePointer : shapesList) {
 		shapePointer->Draw(pUI);
+		if (shapePointer->IsSticked)
+		{
+			this->stickimage(pUI);
+		}
+	}
 }
 
 void Graph::Save(ofstream& outfile) {
@@ -90,9 +140,6 @@ void Graph::UnselectShapes()
 	selectedShape = nullptr;
 }
 
-shape* Graph::GetSelectedShape() {
-	return selectedShape;
-}
 shape* Graph::GetSelectedShape() const {
 	return selectedShape;
 }
@@ -123,6 +170,21 @@ void Graph::ROTATE() //loop on the shape list then rotate the selected shape
 	{
 		if (selectedShape == shapesList[k]) {
 			shapesList[k]->RotateShape();
+		}
+	}
+}
+
+void Graph::stickimage(GUI* pUI) const
+{
+	for (int i = 0; i < shapesList.size(); i++)
+	{
+		if (shapesList[i]->IsSelected())
+		{
+			int x = shapesList[i]->Getshapeinfo()[0];
+			int y = shapesList[i]->Getshapeinfo()[1];
+			int width = shapesList[i]->Getshapeinfo()[2];
+			int height = shapesList[i]->Getshapeinfo()[3];
+			pUI->StickImage("images\\MenuIcons\\image.jpg", x, y, width, height);
 		}
 	}
 }
