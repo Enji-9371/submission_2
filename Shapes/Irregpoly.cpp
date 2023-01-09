@@ -11,7 +11,7 @@ irr_polygon::irr_polygon(Point* p1, int x, GfxInfo shapeGfxInfo) :shape(shapeGfx
 	num = x;
 	int all_x = 0;
 	int all_y= 0;
-	for (int i = 0; i < num; i++)
+	/*for (int i = 0; i < num; i++)
 	{
 		Array_X[i] = array_points[i].x;
 		Array_Y[i] = array_points[i].y;
@@ -19,7 +19,7 @@ irr_polygon::irr_polygon(Point* p1, int x, GfxInfo shapeGfxInfo) :shape(shapeGfx
 		Center.x = Array_X[i] / num;
 		all_y = all_y + Array_Y[i];
 		Center.y = Array_Y[i] / num;
-	}
+	}*/
 
 }
 void irr_polygon::Move(Point P)
@@ -142,5 +142,15 @@ void irr_polygon::ResizeShape(double scale)  	//Resize a single irregular polygo
 }
 
 void irr_polygon::RotateShape()  	//Rotate a single irregular polygon
-{}
+{
+	for (int i = 0; i < num; i++)
+	{
+		double YY = Array_Y[i];
+		double XX = Array_X[i];
+		double VERTIX_Y = XX + Center.y - Center.x;
+		double VERTIX_X = Center.y + Center.x - YY;
+		Array_Y[i] = VERTIX_Y;
+		Array_X[i] = VERTIX_X;
+	}
+}
 
