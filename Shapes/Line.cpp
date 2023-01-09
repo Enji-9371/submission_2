@@ -11,6 +11,8 @@ Line::Line(Point P1, Point P2, GfxInfo shapeGfxInfo):shape(shapeGfxInfo)
 {
 	Corner1 = P1;
 	Corner2 = P2;
+	Center.x = (Corner1.x + Corner2.x) / 2;
+	Center.y = (Corner1.y + Corner2.y) / 2;
 	Length= sqrt(pow(Corner1.x - Corner2.x, 2) + pow(Corner1.y - Corner2.y, 2));
 }
 
@@ -117,4 +119,14 @@ void Line::ResizeShape(double scale)  	//Resize a single line
 	Corner2.y = Corner1.y + Length;
 }
 void Line::RotateShape()  	//Rotate a single line
-{}
+{
+	int C1x = Corner1.x;
+	int C2x = Corner2.x;
+	int C1y = Corner1.y;
+	int C2y = Corner2.y;
+	Corner1.x = Center.y + Center.x - C1y;
+	Corner2.x = Center.y + Center.x - C2y;
+	Corner1.y = C1x + Center.y - Center.x;
+	Corner2.y = C2x + Center.y - Center.x;
+
+}
