@@ -162,4 +162,14 @@ void polygon::ResizeShape(double scale)  	//Resize a single regular polygon
 }
 
 void polygon::RotateShape()  	//Rotate a single regular polygon
-{}
+{
+	for (int i = 0; i < num; i++)
+	{
+		double YY = arrayY[i];
+		double XX = arrayX[i];
+		double VERTIX_Y = XX + center.y - center.x;
+		double VERTIX_X = center.y + center.x - YY;
+		arrayY[i] = VERTIX_Y;
+		arrayX[i] = VERTIX_X;
+	}
+}

@@ -120,4 +120,17 @@ void Ctriangle::ResizeShape(double scale)  	//Resize a single triangle
 	Corner3.y = Corner3.y * scale - (Center.y * scale) + Center.y;
 }
 void Ctriangle::RotateShape()  	//Rotate a single triangle
-{}
+{
+	int C1x = Corner1.x;
+	int C2x = Corner2.x;
+	int C3x = Corner3.x;
+	int C1y = Corner1.y;
+	int C2y = Corner2.y;
+	int C3y = Corner3.y;
+	Corner1.x = Center.y + Center.x - C1y;
+	Corner2.x = Center.y + Center.x - C2y;
+	Corner3.x = Center.y + Center.x - C3y;
+	Corner1.y = C1x + Center.y - Center.x;
+	Corner2.y = C2x + Center.y - Center.x;
+	Corner3.y = C3x + Center.y - Center.x;
+}

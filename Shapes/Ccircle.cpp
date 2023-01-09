@@ -95,5 +95,5 @@ void Ccircle::ResizeShape(double scale)  	//Resize a single regular polygon
 	rad = rad * scale;
 }
 
-void Ccircle::RotateShape()  	//Rotate a single regular polygon
+void Ccircle::RotateShape()  	//Circle cannot be rotated
 {}

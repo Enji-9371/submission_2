@@ -119,5 +119,5 @@ void Squr::ResizeShape(double scale)  	//Resize a single squre
 	Corner2.x = (Corner1.x + L / sqrt(2));
 } 
 
-void Squr::RotateShape()  	//Rotate a single squre
+void Squr::RotateShape()  	//square cannot be rotated
 {}
