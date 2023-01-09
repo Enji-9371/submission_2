@@ -18,23 +18,35 @@ Rect::~Rect()
 
 int* Rect::Getshapeinfo()
 {
-	int arr[6];
-	if (Corner1.y < Corner2.y) {
-		arr[0] = Corner1.x;
-		arr[1] = Corner1.y;
-		arr[2] = Corner2.x - 1;
-		arr[3] = Corner2.y - 1;
+	int listofparameters[4];
+	if (Corner1.x < Corner2.x && Corner1.y < Corner2.y) {
+		listofparameters[0] = Corner1.x - 10;
+		listofparameters[1] = Corner1.y - 10;
+		listofparameters[2] = abs(Corner1.x - Corner2.x) + 15;
+		listofparameters[3] = abs(Corner1.y - Corner2.y) + 15;
+		return listofparameters;
 	}
-	else
-	{
-		arr[0] = Corner2.x - 1;
-		arr[1] = Corner2.y - 1;
-		arr[2] = Corner1.x;
-		arr[3] = Corner1.y;
+	if (Corner1.x > Corner2.x && Corner1.y < Corner2.y) {
+		listofparameters[0] = Corner2.x - 10;
+		listofparameters[1] = Corner1.y - 10;
+		listofparameters[2] = abs(Corner1.x - Corner2.x) + 15;
+		listofparameters[3] = abs(Corner1.y - Corner2.y) + 15;
+		return listofparameters;
 	}
-	arr[4] = sqrt(pow((Corner2.x - Corner1.x), 2) + (pow((Corner2.y - Corner1.y), 2)));
-	arr[5] = sqrt(pow((Corner2.x - Corner1.x), 2) + (pow((Corner2.y - Corner1.y), 2)));
-	return arr;
+	if (Corner1.x > Corner2.x && Corner1.y > Corner2.y) {
+		listofparameters[0] = Corner2.x - 10;
+		listofparameters[1] = Corner2.y - 10;
+		listofparameters[2] = abs(Corner1.x - Corner2.x) + 15;
+		listofparameters[3] = abs(Corner1.y - Corner2.y) + 15;
+		return listofparameters;
+	}
+	if (Corner1.x < Corner2.x && Corner1.y > Corner2.y) {
+		listofparameters[0] = Corner1.x - 10;
+		listofparameters[1] = Corner2.y - 10;
+		listofparameters[2] = abs(Corner1.x - Corner2.x) + 15;
+		listofparameters[3] = abs(Corner1.y - Corner2.y) + 15;
+		return listofparameters;
+	}
 }
 
 

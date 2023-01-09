@@ -66,6 +66,7 @@ class GUI
 		ICON_SELECT,
 		ICON_MULTISELECTION,
 		ICON_SENDTOBACK,
+		
 	
 		ICON_COPY,
 		ICON_PASTE,
@@ -100,6 +101,8 @@ class GUI
 		ICON_START,          //start game icon in menu
 		ICON_MATCH,          //match icon in menu
 		ICON_DRAW,          //Draw mode icon in menu
+		ICON_HIDE,          //Hide icon in menu
+		ICON_UNHIDE,        //Unhide icon in menu
 		PLAY_ICON_COUNT		//no. of menu icons ==> This should be the last line in this enum
 
 	};
@@ -177,6 +180,7 @@ public:
 	color getCrntDrawColor() const;	//get current drwawing color
 	color getCrntFillColor() const;	//get current filling color
 	int getCrntPenWidth() const;		//get current pen width
+	window* GetpWind() const;
 	bool GetIsFilled()const;
 	void setCrntDrawColor(operationType dcolor);	//set current drawing color
 	void setCrntFillColor(operationType fcolor);	//set current filling color

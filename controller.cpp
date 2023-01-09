@@ -31,6 +31,8 @@
 #include "opSelect.h"
 #include "operations/opdelete.h"
 #include "operations/Stick_Image.h"
+#include "operations/Hide.h"
+#include "operations/Unhide.h"
 //Constructor
 controller::controller()
 {
@@ -183,6 +185,14 @@ operation* controller::createOperation(operationType OpType)
 			pOp = new Duplicate(this);
 			break;
 
+		case HIDE:
+			pOp = new Hide(this);
+			break;
+
+		case UNHIDE:
+			pOp = new Unhide(this);
+			break;
+
 		case EXIT:
 			pOp = new Exit(this);
 			break;
@@ -194,17 +204,6 @@ operation* controller::createOperation(operationType OpType)
 
 	return pOp;
 	
-}
-
-
-void controller::SetClipboard(shape* clip) //To store the shape coppied in the clipboard
-{
-		Clipboard = clip;
-}
-
-shape* controller::GetClipboard()const
-{
-	return Clipboard;
 }
 
 void controller::setID(int Scount)

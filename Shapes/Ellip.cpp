@@ -11,6 +11,7 @@ Ellip::Ellip(Point P1, Point P2, GfxInfo shapeGfxInfo) :shape(shapeGfxInfo)
 	Corner2 = P2;
 	Center.x = (Corner1.x + Corner2.x) / 2;
 	Center.y = (Corner1.y + Corner2.y) / 2;
+	Distance = sqrt(pow((P2.x - P1.x), 2) + pow((P2.y - P1.y), 2));
 }
 
 Ellip::~Ellip()
@@ -19,23 +20,36 @@ Ellip::~Ellip()
 
 int* Ellip::Getshapeinfo()
 {
-	int arr[6];
-	if (Corner1.y < Corner2.y) {
-		arr[0] = Corner1.x;
-		arr[1] = Corner1.y;
-		arr[2] = Corner2.x - 1;
-		arr[3] = Corner2.y - 1;
+	int dis = Distance;
+	int list[4];
+	if (Corner1.x < Corner2.x && Corner1.y < Corner2.y) {
+		list[0] = Corner1.x - 10;
+		list[1] = Corner1.y - 10;
+		list[2] = dis + 20;
+		list[3] = dis;
+		return list;
 	}
-	else
-	{
-		arr[0] = Corner2.x - 1;
-		arr[1] = Corner2.y - 1;
-		arr[2] = Corner1.x;
-		arr[3] = Corner1.y;
+	else if (Corner1.x > Corner2.x && Corner1.y < Corner2.y) {
+		list[0] = Corner2.x - 10;
+		list[1] = Corner1.y - 10;
+		list[2] = dis + 20;
+		list[3] = dis;
+		return list;
 	}
-	arr[4] = sqrt(pow((Corner2.x - Corner1.x), 2) + (pow((Corner2.y - Corner1.y), 2)));
-	arr[5] = sqrt(pow((Corner2.x - Corner1.x), 2) + (pow((Corner2.y - Corner1.y), 2)));
-	return arr;
+	else if (Corner1.x > Corner2.x && Corner1.y > Corner2.y) {
+		list[0] = Corner2.x - 10;
+		list[1] = Corner2.y - 10;
+		list[2] = dis + 20;
+		list[3] = dis;
+		return list;
+	}
+	else if (Corner1.x < Corner2.x && Corner1.y > Corner2.y) {
+		list[0] = Corner1.x - 10;
+		list[1] = Corner2.y - 10;
+		list[2] = dis + 20;
+		list[3] = dis;
+		return list;
+	}
 }
 
 

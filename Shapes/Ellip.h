@@ -8,6 +8,7 @@ private:
 	Point Corner1;
 	Point Corner2;
 	Point Center;
+	int Distance;
 public:
 	Ellip();
 	Ellip (Point, Point, GfxInfo shapeGfxInfo);

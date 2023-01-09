@@ -10,7 +10,7 @@ GUI::GUI()
 	wx = 5;
 	wy = 5;
 	StatusBarHeight = 50;
-	ToolBarHeight = 50;
+	ToolBarHeight = 65;
 	MenuIconWidth = 40;
 
 	DrawColor = BLACK;	//default Drawing color
@@ -148,9 +148,11 @@ operationType GUI::GetUseroperation() const
 
 			switch (ClickedIconOrder)
 			{
-			case ICON_DRAW: return TO_DRAW; break;
+			case ICON_DRAW:  return TO_DRAW; break;
 			case ICON_MATCH: return MATCH;  break;
 			case ICON_START: return START;  break;
+			case ICON_HIDE:  return HIDE;     break;
+			case ICON_UNHIDE:return UNHIDE;   break;
 
 			default: return EMPTY; break;	//A click on empty place in desgin toolbar
 			}
@@ -172,7 +174,10 @@ operationType GUI::GetUseroperation() const
 }
 ////////////////////////////////////////////////////
 
-
+window* GUI::GetpWind() const
+{
+	return pWind;
+}
 
 //======================================================================================//
 //								Output Functions										//
@@ -348,7 +353,7 @@ operationType GUI::CreateColorBar()
 void GUI::CreatePlayToolBar() 
 {
 	int  play_width = 1800;
-	int play_ToolBarHeight = 47;
+	int play_ToolBarHeight = 65;
 	int play_MenuIconWidth = 60;
 
 	InterfaceMode = MODE_PLAY;
@@ -357,6 +362,11 @@ void GUI::CreatePlayToolBar()
 	MenuIconImages[ICON_DRAW] = "images\\MenuIcons\\Menu_SwitchToDraw.jpg";
 	MenuIconImages[ICON_MATCH] = "images\\MenuIcons\\match.jpg";
 	MenuIconImages[ICON_START] = "images\\MenuIcons\\start.jpg";
+	MenuIconImages[ICON_HIDE] = "images\\MenuIcons\\hide.jpg";
+	MenuIconImages[ICON_UNHIDE] = "images\\MenuIcons\\unhide.jpg";
+
+
+
 
 
 

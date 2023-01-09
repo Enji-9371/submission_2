@@ -9,6 +9,8 @@ private:
 	Point Corner2;
 	Point center;
 	double L;
+	int* arrX = new int;
+	int* arrY = new int;
 public:
 	Squr();
 	Squr(Point, Point, GfxInfo shapeGfxInfo);

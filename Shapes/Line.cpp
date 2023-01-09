@@ -21,32 +21,37 @@ Line::~Line()
 
 int* Line::Getshapeinfo()
 {
-	int arr[11];
-	if (Corner1.y < Corner2.y || Corner1.x < Corner2.x) {
-		arr[0] = Corner1.x - 5;
-		arr[1] = Corner1.y - 2;
-		arr[2] = Corner1.x - 5;
-		arr[3] = Corner1.y - 5;
-
+	int dis = Length;
+	int list[4];
+	if (Corner1.x < Corner2.x && Corner1.y > Corner2.y) {
+		list[0] = Corner1.x - 10;
+		list[1] = Corner2.y - 10;
+		list[2] = dis + 20;
+		list[3] = dis + 20;
+		return list;
 	}
-	else
-	{
-		arr[0] = Corner2.x - 5;
-		arr[1] = Corner2.y - 2;
-		arr[2] = Corner1.x - 5;
-		arr[3] = Corner1.y - 5;
-
+	else if (Corner1.x < Corner2.x && Corner1.y < Corner2.y) {
+		list[0] = Corner1.x - 10;
+		list[1] = Corner1.y - 10;
+		list[2] = dis + 20;
+		list[3] = dis + 20;
+		return list;
 	}
-	arr[4] = sqrt(pow((Corner2.x - Corner1.x), 2) + (pow((Corner2.y - Corner1.y), 2)));//get width
-	arr[5] = sqrt(pow((Corner2.x - Corner1.x), 2) + (pow((Corner2.y - Corner1.y), 2)));// get height
-	arr[7] = Corner1.x;
-	arr[8] = Corner1.y;
-	arr[9] = Corner2.x;
-	arr[10] = Corner2.y;
-	return arr;
+	else if (Corner1.x > Corner2.x && Corner1.y > Corner2.y) {
+		list[0] = Corner2.x - 10;
+		list[1] = Corner2.y - 10;
+		list[2] = dis + 20;
+		list[3] = dis + 20;
+		return list;
+	}
+	else if (Corner1.x > Corner2.x && Corner1.y < Corner2.y) {
+		list[0] = Corner2.x - 10;
+		list[1] = Corner1.y - 10;
+		list[2] = dis + 20;
+		list[3] = dis + 20;
+		return list;
+	}
 }
-
-
 
 void Line::Save(ofstream& OutFile)
 {

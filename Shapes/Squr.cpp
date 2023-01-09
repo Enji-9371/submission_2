@@ -1,6 +1,7 @@
 #include "Squr.h"
 #include<fstream>
 #include "../GUI/GUI.h"
+#include "math.h"
 Squr::Squr()
 {
 }
@@ -11,28 +12,25 @@ Squr::Squr(Point P1, Point P2, GfxInfo shapeGfxInfo) :shape(shapeGfxInfo)
 	P2.y = P1.y + L / sqrt(2);
 	Corner1 = P1;
 	Corner2 = P2;
+	arrX[0] = Corner1.x;
+	arrY[0] = Corner1.y;
+	arrX[1] = Corner1.x + L;
+	arrY[1] = Corner1.y;
+	arrX[2] = Corner1.x + L;
+	arrY[2] = Corner1.y + L;
+	arrX[3] = Corner1.x;
+	arrY[3] = Corner1.y + L;
 }
 
 
 int* Squr::Getshapeinfo()
 {
-	int arr[6];
-	if (Corner1.y < Corner2.y) {
-		arr[0] = Corner1.x;
-		arr[1] = Corner1.y;
-		arr[2] = Corner2.x - 1;
-		arr[3] = Corner2.y - 1;
-	}
-	else
-	{
-		arr[0] = Corner2.x - 1;
-		arr[1] = Corner2.y - 1;
-		arr[2] = Corner1.x;
-		arr[3] = Corner1.y;
-	}
-	arr[4] = sqrt(pow((Corner2.x - Corner1.x), 2) + (pow((Corner2.y - Corner1.y), 2)));
-	arr[5] = sqrt(pow((Corner2.x - Corner1.x), 2) + (pow((Corner2.y - Corner1.y), 2)));
-	return arr;
+	int listofparameters[4];
+	listofparameters[0] = arrX[0] - 10;
+	listofparameters[1] = arrY[0] - 10;
+	listofparameters[2] = abs(arrX[0] - arrX[1]) + 15;
+	listofparameters[3] = abs(arrY[0] - arrY[2]) + 15;
+	return listofparameters;
 }
 
 
