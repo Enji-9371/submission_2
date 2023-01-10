@@ -150,21 +150,21 @@ void Graph::Save(ofstream& outfile) {
 
 
 
-void Graph::DeleteShapeFromList()
+void Graph::DELSHAPE()
 {
-	int size, count;
+	int size, num;
 	size = shapesList.size();
-	count = 0;
+	num = 0;
 	for (auto& shapePointer : shapesList)
 	{
 
 		if (shapePointer->IsSelected())
 		{
-			//delete &shapePointer;
-			shapesList.erase(shapesList.begin() + count);
-			count--;
+			;
+			shapesList.erase(shapesList.begin() + num);
+			num--;
 		}
-		count++;
+		num++;
 	}
 }
 
@@ -253,7 +253,7 @@ void Graph::Duplicated(GUI* pGUI)
 	}
 }
 
-bool Graph::MATCH(shape*  shape1, shape*  shape2)
+bool Graph::MATCH(shape*  shape1, shape*  shape2)   //match function
 {
 	for (int i = 0; i < shapesList.size(); i++)
 	{
@@ -265,13 +265,32 @@ bool Graph::MATCH(shape*  shape1, shape*  shape2)
 				{
 					//pUI->PrintMessage("matched");
 					return true;
+					/*DeleteShapeFromList(shape1);
+					DeleteShapeFromList(shape2);*/
+					shapesList[i]->SetSelected(false);
+					shapesList[j]->SetSelected(false);
+					delete shapesList[i];
+					delete shapesList[j];
+					shapesList.erase(shapesList.begin() + i);
+					shapesList.erase(shapesList.begin() + j);
 				}
 				else
 				{
+					//GUI* pUI = pControl->GetUI();
 					//pUI->PrintMessage("not matched");
 					return false;
+					shapesList[i]->IsHidden(true);
+					shapesList[j]->IsHidden(true);
 				}
 			}
 		}
+	}
+}
+
+void  Graph::HIDEALL()  //hide all shapes
+{
+	for (int i = 0; i < shapesList.size(); i++)
+	{
+		shapesList[i]->IsHidden(true);
 	}
 }

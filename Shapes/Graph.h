@@ -45,7 +45,8 @@ public:
 	void RESIZE(double n);              //RESIZE FUNCTION
 	void ROTATE();  //rotate a single shape by 90 deg
 	void Duplicated(GUI* pGUI);
-	void DeleteShapeFromList();
+	void DELSHAPE();
 	bool MATCH(shape* shape1, shape* shape2);
+	void HIDEALL();
 
 };
