@@ -38,6 +38,11 @@ void opStart::Execute()
 			}
 			cout << "your score is:  " << counter << endl;
 		}
-		pUI->PrintMessage("CONGRATES! ");
+		bool m;
+		m=pGraph->check_if_finished();
+		if (m == true)
+		{
+			pUI->PrintMessage("CONGRATES! ");
+		}
 	}
 }
