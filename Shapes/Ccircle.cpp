@@ -157,14 +157,7 @@ void  Ccircle::OPZOOM(double px, double py, double scale)  //function to zoom in
 	Corner2.x = (Corner2.x * scale) - (scale * px) + px;
 	Corner2.y = (Corner2.y * scale) - (scale * py) + py;
 }
-//void  Ccircle::OPZOOM(double x, double y, double s)
-//{
-//	Corner1.x = (Corner1.x * s) - (s * x) + x;
-//	Corner1.y = (Corner1.y * s) - (s * y) + y;
-//	Corner2.x = (Corner2.x * s) - (s * x) + x;
-//	Corner2.y = (Corner2.y * s) - (s * y) + y;
-//	rad = s * rad;
-//}
+
 shape* Ccircle::duplicate(GUI* pGUI) {
 	int rad = sqrt(((center.x - border.x) * (center.x - border.x)) + ((center.y - border.y) * (center.y - border.y)));
 	Point corner3;

@@ -203,8 +203,4 @@ void Rect::RotateShape()  	//Rotate a single rectangle
 	Corner1.y = C1x+ Center.y - Center.x;
 	Corner2.y = C2x + Center.y - Center.x;
 
-	//Corner1.x = Center.y + Center.x - Corner1.y;
-	//Corner1.y = Corner1.x - Center.x + Center.y;
-	//Corner2.x = Center.y + Center.x - Corner2.y;
-	//Corner2.y = Corner2.x - Center.x + Center.y;
 }
