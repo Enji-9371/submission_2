@@ -37,9 +37,14 @@ bool shape::IsDuplicated() const
 	return ShpGfxInfo.isDuplicated; 
 }
 
-void shape::IsHidden(bool h)
+void shape::SetHidden(bool s)
 {
-	ShpGfxInfo.isHidden = h;
+	ShpGfxInfo.isHidden = s;
+}
+
+bool shape::IsHidden()
+{
+	return ShpGfxInfo.isHidden;
 }
 
 void shape::ChngFillClr(color Fclr)

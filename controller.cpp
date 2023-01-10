@@ -197,7 +197,7 @@ operation* controller::createOperation(operationType OpType)
 			break;
 
 		case UNHIDE:
-			pOp = new Unhide(this);
+			pOp = new UnHide(this);
 			break;
 
 		case EXIT:

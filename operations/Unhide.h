@@ -1,16 +1,10 @@
 #pragma once
 #include "operation.h"
-#include "../Shapes/Shape.h"
-#include<vector>
 
-class Unhide : public operation
-
+class UnHide :public operation
 {
-	vector <shape*> shapelist;
-
 public:
-
-	Unhide(controller* pCont);
+	UnHide(controller* pCont);
+	virtual ~UnHide();
 	virtual void Execute();
-
 };

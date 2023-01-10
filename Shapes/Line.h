@@ -22,6 +22,7 @@ public:
 	void OPZOOM(double px, double py, double scale);
 	Line(const Line* copy);
 	virtual shape* clone();
+	void hideShape(GUI* pUI) override;
 	virtual shape* duplicate(GUI* pGUI);
 	void ResizeShape(double scale);  	//Resize a single line
 	void RotateShape();  	//Rotate a single line

@@ -24,7 +24,8 @@ public:
 	void SetSelected(bool s);	//select/unselect the shape
 	bool IsSelected() const;	//check whether fig is selected
 	bool IsDuplicated() const;  //check whether the shape is duplicated or not
-	void IsHidden(bool h);
+	void SetHidden(bool s);
+	bool IsHidden();
 	bool IsSticked = false;
 
 
@@ -48,6 +49,7 @@ public:
 	virtual void Move(Point P) = 0;	//move 
 	virtual shape* clone() = 0;
 	virtual int* Getshapeinfo() = 0;
+	virtual void hideShape(GUI* pUI) = 0;
 
 	virtual void OPZOOM(double x, double y, double scale) = 0;   //virtual func. to zoom all shapes
 	virtual void ResizeShape(double scale) = 0;  	//Resize a single shape

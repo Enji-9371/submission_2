@@ -15,6 +15,10 @@ void Ctriangle::Save(ofstream& OutFile)
 	OutFile << "TRIANGLE" << " " << Corner1.x << " " << Corner1.y << " " << Corner2.x << " " << Corner2.y << " " << Corner3.x << " " << Corner3.y << " " << (ShpGfxInfo.isFilled) << " " << to_string(ShpGfxInfo.FillClr.ucRed) << " " << to_string(ShpGfxInfo.FillClr.ucGreen) << " " << to_string(ShpGfxInfo.FillClr.ucBlue) << " " << to_string(ShpGfxInfo.DrawClr.ucRed) << " " << to_string(ShpGfxInfo.DrawClr.ucGreen) << " " << to_string(ShpGfxInfo.DrawClr.ucBlue) << " " << (ShpGfxInfo.BorderWdth) << endl;
 
 }
+void Ctriangle::hideShape(GUI* pUI)
+{
+	//pUI->StickImage("images\\MenuIcons\\image.jpg", Corner1.x, Corner1.y, 200, 200);
+}
 
 Ctriangle::Ctriangle()
 {}

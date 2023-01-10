@@ -23,6 +23,11 @@ Squr::Squr(Point P1, Point P2, GfxInfo shapeGfxInfo) :shape(shapeGfxInfo)
 
 }
 
+void Squr::hideShape(GUI* pUI)
+{
+	//pUI->StickImage("images\\MenuIcons\\image.jpg", Corner1.x, Corner1.y, 200, 200);
+}
+
 
 int* Squr::Getshapeinfo()
 {

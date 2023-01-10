@@ -22,6 +22,7 @@ public:
 	Ccircle(const Ccircle* copy);
 	int* Getshapeinfo();
 	virtual shape* clone();
+	void hideShape(GUI* pUI) override;
 	virtual shape* duplicate(GUI* pGUI);
 	void OPZOOM(double px, double py, double scale);
 	void ResizeShape(double scale);  	//Resize a single circle

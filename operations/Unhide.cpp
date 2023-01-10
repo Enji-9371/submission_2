@@ -1,15 +1,13 @@
-#include "Unhide.h"
+#include "UnHide.h"
 #include "../controller.h"
-#include"../Shapes/Shape.h"
 
-Unhide::Unhide(controller* pCont) : operation(pCont) 
-{
-}
+UnHide::UnHide(controller* pCont) :operation(pCont) {}
+UnHide::~UnHide() {}
 
-void Unhide::Execute() {
+void UnHide::Execute() {
+
 	GUI* pUI = pControl->GetUI();
-	Graph* pGraph = pControl->getGraph();
-	pGraph->UnHide(pUI);
-	pUI->PrintMessage("Shapes are Hidden");
+	Graph* pGr = pControl->getGraph();
 
+	pGr->Unhide_shapes(pUI);
 }

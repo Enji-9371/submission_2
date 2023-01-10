@@ -21,6 +21,7 @@ public:
 	virtual void Load(ifstream& Outfile);
 	virtual shape* duplicate(GUI* pGUI);
 	polygon(const polygon* copy);
+	void hideShape(GUI* pUI) override;
 	virtual shape* clone();
 	virtual void Move(Point P);
 	virtual bool point_included(int x, int y);

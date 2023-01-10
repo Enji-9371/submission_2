@@ -19,6 +19,7 @@ public:
 	virtual void Move(Point P);
 	virtual void Draw(GUI* pUI) const;
 	virtual bool point_included(int z, int y);
+	void hideShape(GUI* pUI) override;
 	virtual shape* duplicate(GUI* pGUI);
 	int* Getshapeinfo();
 	void OPZOOM(double px, double py, double scale);

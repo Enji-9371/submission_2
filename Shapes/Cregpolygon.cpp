@@ -16,6 +16,10 @@ polygon::polygon(Point p1, Point p2, int i, GfxInfo shapeGfxInfo) :shape(shapeGf
 polygon::~polygon()
 {}
 
+void polygon::hideShape(GUI* pUI)
+{
+	//pUI->StickImage("images\\MenuIcons\\image.jpg", center.x, center.y, 200, 200);
+}
 
 polygon::polygon()
 {

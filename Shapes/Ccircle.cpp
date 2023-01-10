@@ -16,6 +16,11 @@ Ccircle::Ccircle()
 Ccircle::~Ccircle()
 {}
 
+void Ccircle::hideShape(GUI* pUI)
+{
+	//pUI->StickImage("images\\MenuIcons\\image.jpg", center.x, center.y, 200, 200);
+}
+
 
 void Ccircle::Save(ofstream& OutFile)
 {

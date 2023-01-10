@@ -17,6 +17,11 @@ Ellip::Ellip(Point P1, Point P2, GfxInfo shapeGfxInfo) :shape(shapeGfxInfo)
 Ellip::~Ellip()
 {}
 
+void Ellip::hideShape(GUI* pUI)
+{
+	//pUI->StickImage("images\\MenuIcons\\image.jpg", Corner1.x, Corner1.y, 200, 200);
+}
+
 
 int* Ellip::Getshapeinfo()
 {
@@ -155,7 +160,7 @@ void Ellip::Draw(GUI* pUI) const
 
 bool Ellip::point_included(int x, int y)
 {
-	return true;
+	return;
 }
 
 shape* Ellip::duplicate(GUI* pGUI) {

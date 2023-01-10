@@ -32,8 +32,8 @@ public:
 	void setCopied(shape*);
 	shape* getCopied();
 	void clearClipboard();
-	void Hide(GUI* pUI);
-	void UnHide(GUI* pUI);
+	void Hide_shapes(GUI* pUI);
+	void Unhide_shapes(GUI* pUI);
 
 
 	void copy();

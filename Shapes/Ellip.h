@@ -21,6 +21,7 @@ public:
 	virtual shape* clone();
 	virtual void Draw(GUI* pUI) const;
 	int* Getshapeinfo();
+	void hideShape(GUI* pUI) override;
 	virtual void Move(Point P);
 	void OPZOOM(double px, double py, double scale);
 	void ResizeShape(double scale);  	//Resize a single ellipse

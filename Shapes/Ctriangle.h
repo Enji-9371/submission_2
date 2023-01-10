@@ -24,6 +24,7 @@ public:
 	double triarea(int, int, int, int, int, int);
 	virtual bool point_included(int x, int y);
 	virtual shape* clone();
+	void hideShape(GUI* pUI) override;
 	virtual void Move(Point P);
 	void OPZOOM(double px, double py, double scale);
 	void ResizeShape(double scale);  	//Resize a single triangle

@@ -29,6 +29,7 @@ public:
 	int* Getshapeinfo();
 	virtual bool point_included(int x, int y);
 	void OPZOOM(double px, double py, double scale);
+	void hideShape(GUI* pUI) override;
 	void ResizeShape(double scale);  	//Resize a single square
 	void RotateShape();  	//Rotate a single square
 };

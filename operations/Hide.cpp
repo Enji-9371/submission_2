@@ -1,15 +1,13 @@
 #include "Hide.h"
 #include "../controller.h"
-#include"../Shapes/Shape.h"
 
-Hide::Hide(controller* pCont) : operation(pCont)
-{
-}
+Hide::Hide(controller* pCont) :operation(pCont) {}
+Hide::~Hide() {}
 
-void Hide::Execute() 
-{
+void Hide::Execute() {
+
 	GUI* pUI = pControl->GetUI();
-	Graph* pGraph = pControl->getGraph();
-	pGraph->Hide(pUI);
-	pUI->PrintMessage("Shapes are Hidden");
+	Graph* pGr = pControl->getGraph();
+
+	pGr->Hide_shapes(pUI);
 }

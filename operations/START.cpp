@@ -20,7 +20,7 @@ void opStart::Execute()
 	{
 		pShape1->duplicate(pUI);
 		//pGraph->Scramble();
-		pGraph->HIDEALL();
+		pGraph->Hide_shapes(pUI);
 		pUI->PrintMessage("SELECT A CARD: ");
 		shape* pShape2 = pGraph->GetSelected();
 		if (pShape2->IsSelected() == true)

@@ -86,18 +86,21 @@ void Graph::CCUT()
 		}
 	}
 	}
-void Graph::Hide(GUI* pUI) {
-
-	for (auto shapePointer : shapesList) {
-		shapePointer->IsHidden(true);
+void Graph::Hide_shapes(GUI* pUI)
+{
+	for (auto shapePointer : shapesList)
+	{
+		shapePointer->SetHidden(true);
 	}
 	Draw(pUI);
 }
 
-void Graph::UnHide(GUI* pUI) {
 
-	for (auto shapePointer : shapesList) {
-		shapePointer->IsHidden(false);
+void Graph::Unhide_shapes(GUI* pUI)
+{
+	for (auto shapePointer : shapesList)
+	{
+		shapePointer->SetHidden(false);
 	}
 	Draw(pUI);
 }
@@ -372,19 +375,11 @@ bool Graph::MATCH(shape*  shape1, shape*  shape2)   //match function
 					//GUI* pUI = pControl->GetUI();
 					//pUI->PrintMessage("not matched");
 					return false;
-					shapesList[i]->IsHidden(true);
-					shapesList[j]->IsHidden(true);
+					shapesList[i]->IsHidden();
+					shapesList[j]->IsHidden();
 				}
 			}
 		}
-	}
-}
-
-void  Graph::HIDEALL()  //hide all shapes
-{
-	for (int i = 0; i < shapesList.size(); i++)
-	{
-		shapesList[i]->IsHidden(true);
 	}
 }
 

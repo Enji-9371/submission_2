@@ -53,6 +53,11 @@ int* Line::Getshapeinfo()
 	}
 }
 
+void Line::hideShape(GUI* pUI)
+{
+	//pUI->StickImage("images\\MenuIcons\\image.jpg", Corner1.x, Corner1.y, 200, 200);
+}
+
 void Line::Save(ofstream& OutFile)
 {
 

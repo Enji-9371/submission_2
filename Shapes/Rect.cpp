@@ -68,6 +68,11 @@ void Rect::Save(ofstream& OutFile)
 
 }
 
+void Rect::hideShape(GUI* pUI)
+{
+	//pUI->StickImage("images\\MenuIcons\\image.jpg", Corner1.x, Corner1.y, 200, 200);
+}
+
 void Rect::Load(ifstream& inFile)
 {
 	type = "Rect";
