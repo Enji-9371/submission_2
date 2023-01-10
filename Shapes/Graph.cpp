@@ -304,3 +304,16 @@ void  Graph::HIDEALL()  //hide all shapes
 		shapesList[i]->IsHidden(true);
 	}
 }
+
+
+bool Graph::check_if_finished()  //check if the game is finished
+{
+	if (shapesList.size() == 0)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}

@@ -49,5 +49,5 @@ public:
 	void DELSHAPE();
 	bool MATCH(shape* shape1, shape* shape2);
 	void HIDEALL();
-
+	bool check_if_finished();  //check if the game is finished
 };
