@@ -15,7 +15,8 @@ void opMatch::Execute()
 	//Get a Pointer to the Input / Output Interfaces
 
 	GUI* pUI = pControl->GetUI();
+	Graph* pGraph = pControl->getGraph();
 	pUI->PrintMessage("matching");
-
+	//pGraph->MATCH( shape1, shape2);
 	
 }
