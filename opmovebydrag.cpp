@@ -2,13 +2,13 @@
 #include "controller.h"
 #include "GUI/GUI.h"
 
-opMove::opMove(controller* pCont) :operation(pCont)
+Move::Move(controller* pCont) :operation(pCont)
 {}
-opMove::~opMove()
+Move::~Move()
 {}
 
 //Execute the operation
-void opMove::Execute()
+void Move::Execute()
 {
     GUI* pUI = pControl->GetUI();
     Point P;
@@ -16,7 +16,7 @@ void opMove::Execute()
     Graph* pGr = pControl->getGraph();
     window* pWind = pUI->DetectMouse();
     GUI* pIn = pControl->GetUI();
-    pIn->PrintMessage(" SELCT SHAPE TO MOVE ");
+    pIn->PrintMessage(" MOVE IS ON SELECT A SHAPE..  ");
 
     while (pWind->GetButtonState(LEFT_BUTTON, P.x, P.y) != BUTTON_DOWN)
     {

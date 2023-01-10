@@ -69,6 +69,16 @@ void Graph::paste(Point p)
 
 }
 
+void Graph::CCUT()
+{
+	for (int i = 0; i < shapesList.size(); i++) {
+		if (shapesList[i]->IsSelected()) {
+			clipboard.push_back(shapesList[i]);
+			shapesList.erase(shapesList.begin() + i);
+
+		}
+	}
+	}
 void Graph::Hide(GUI* pUI) {
 
 	for (auto shapePointer : shapesList) {

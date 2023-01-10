@@ -32,6 +32,7 @@
 #include "operations/opdelete.h"
 #include "operations/Stick_Image.h"
 #include "operations/Hide.h"
+#include"CUT.h"
 #include "operations/Unhide.h"
 //Constructor
 controller::controller()
@@ -112,6 +113,7 @@ operation* controller::createOperation(operationType OpType)
 		case PEN_WIDTH:               //pen width icon
 			pOp = new opPenWidth(this);
 			break;
+
 		case SELECT:
 			pOp = new opSelect(this);
 			break;
@@ -149,7 +151,7 @@ operation* controller::createOperation(operationType OpType)
 			break;
 
 		case MOVE : 
-			pOp = new opMove(this); // move by drag 
+			pOp = new Move(this); // move by drag 
 			break;
 		//case LOAD:
 		//	pOp = new Load(this);
@@ -167,6 +169,9 @@ operation* controller::createOperation(operationType OpType)
 			pOp = new Paste(this);
 			break;
 	
+		case CUTT : 
+			pOp = new cut(this); 
+			break; 
 
 			case DEL:
 			pOp = new opdelete(this);
