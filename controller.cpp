@@ -93,12 +93,12 @@ operation* controller::createOperation(operationType OpType)
 			pOp = new SwitchToDraw(this);
 			break;
 
-		case MATCH:
-			pOp = new opMatch(this);
-			break;
-
 		case START:
 			pOp = new opStart(this);
+			break;
+
+		case MATCH:
+			pOp = new opMatch(this);
 			break;
 
 		case TO_PLAY:

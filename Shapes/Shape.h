@@ -1,6 +1,7 @@
 #pragma once
 #include "..\defs.h"
 #include "..\GUI\GUI.h"
+#include<ctime>
 
 
 //Base class for all shapes

@@ -148,8 +148,8 @@ operationType GUI::GetUseroperation() const
 
 			switch (ClickedIconOrder)
 			{
-			case ICON_MATCH: return MATCH;  break;
 			case ICON_START: return START;  break;
+			case ICON_MATCH: return MATCH;  break;
 			case ICON_HIDE:  return HIDE;     break;
 			case ICON_UNHIDE:return UNHIDE;   break;
 			case ICON_DRAW:  return TO_DRAW; break;
