@@ -15,8 +15,8 @@
 #include"operations/ZoomIn.h"
 #include"operations/ZoomOut.h"
 #include "operations/Exit.h"
-#include"operations/Group.h"
-#include"operations/Ungroup.h"
+//#include"operations/Group.h"
+//#include"operations/Ungroup.h"
 #include"operations/Rotate.h"
 #include "operations\opsave.h"
 #include "operations/Copy.h"
@@ -132,13 +132,13 @@ operation* controller::createOperation(operationType OpType)
 			pOp = new opResize(this);
 			break;
 
-		case GROUP:   //group
-			pOp = new opGroup(this);
-			break;
+		//case GROUP:   //group
+		//	pOp = new opGroup(this);
+		//	break;
 
-		case UNGROUP:   //ungroup
-			pOp = new opUngroup(this);
-			break;
+		//case UNGROUP:   //ungroup
+		//	pOp = new opUngroup(this);
+		//	break;
 
 		case STICK:
 			pOp = new Stick_Image(this);
