@@ -2,6 +2,8 @@
 #include "../GUI/GUI.h"
 #include"../Shapes/Shape.h"
 #include "../controller.h"
+#include <iostream>
+using namespace std;
 Graph::Graph()
 {
 	selectedShape = nullptr;
@@ -23,6 +25,101 @@ void Graph::Addshape(shape* pShp)
 	shapesList.push_back(pShp);	
 }
 
+void Graph::setCopied(shape* copied) {
+	copiedShape = copied;
+}
+
+shape* Graph::getCopied() {
+	return copiedShape;
+}
+
+void Graph::clearClipboard()
+{
+	clipboard.clear();
+
+}
+
+void Graph::copy()
+{
+	for (int i = 0; i < shapesList.size(); i++) {
+		if (shapesList[i]->IsSelected()) {
+			clipboard.push_back(shapesList[i]);
+		}
+	}
+
+	UnselectShapes();
+}
+
+void Graph::paste(Point p)
+
+{
+	if (!clipboard.empty()) {
+
+		for (int i = 0; i < clipboard.size(); i++) {
+
+			shape* newShape = clipboard[i]->clone();
+			newShape->Move(p);
+			shapesList.push_back(newShape);
+
+		}
+		clearClipboard();
+	}
+	UnselectShapes();
+
+
+}
+
+void Graph::Hide(GUI* pUI) {
+
+	for (auto shapePointer : shapesList) {
+		shapePointer->IsHidden(true);
+	}
+	Draw(pUI);
+}
+
+void Graph::UnHide(GUI* pUI) {
+
+	for (auto shapePointer : shapesList) {
+		shapePointer->IsHidden(false);
+	}
+	Draw(pUI);
+}
+
+
+void Graph::Sendtoback(GUI* pUI)
+{
+	if (GetSelected() == nullptr) {
+		pUI->PrintMessage("Select a shape first ");
+	}
+	else if (GetSelected() != nullptr)
+	{
+		pUI->PrintMessage("Select the shape to send back : ");
+		shape* temp = shapesList[0];
+		shapesList[0] = GetSelected();
+		for (int i = 0; i < shapesList.size(); i++) {
+			if (shapesList[i] == GetSelected()) {
+				shapesList[0] = GetSelected();
+				shapesList[i] = temp;
+			}
+
+		}
+		for (auto shapePointer : shapesList) {
+			shapePointer->Draw(pUI);
+		}
+
+		pUI->ClearStatusBar();
+	}
+
+	else if (GetSelected() == nullptr)
+	{
+		pUI->PrintMessage("Please select a shape first");
+		color col = pUI->getCrntFillColor();
+
+
+	}
+}
+
+
 shape* Graph::GetSelected()
 {
 	return selectedShape;
@@ -32,8 +129,13 @@ shape* Graph::GetSelected()
 void Graph::Draw(GUI* pUI) const
 {
 	pUI->ClearDrawArea();
-	for (auto shapePointer : shapesList)
+	for (auto shapePointer : shapesList) {
 		shapePointer->Draw(pUI);
+		if (shapePointer->IsSticked)
+		{
+			this->stickimage(pUI);
+		}
+	}
 }
 
 void Graph::Save(ofstream& outfile) {
@@ -91,9 +193,6 @@ void Graph::UnselectShapes()
 	selectedShape = nullptr;
 }
 
-shape* Graph::GetSelectedShape() {
-	return selectedShape;
-}
 shape* Graph::GetSelectedShape() const {
 	return selectedShape;
 }
@@ -124,6 +223,21 @@ void Graph::ROTATE() //loop on the shape list then rotate the selected shape
 	{
 		if (selectedShape == shapesList[k]) {
 			shapesList[k]->RotateShape();
+		}
+	}
+}
+
+void Graph::stickimage(GUI* pUI) const
+{
+	for (int i = 0; i < shapesList.size(); i++)
+	{
+		if (shapesList[i]->IsSelected())
+		{
+			int x = shapesList[i]->Getshapeinfo()[0];
+			int y = shapesList[i]->Getshapeinfo()[1];
+			int width = shapesList[i]->Getshapeinfo()[2];
+			int height = shapesList[i]->Getshapeinfo()[3];
+			pUI->StickImage("images\\MenuIcons\\image.jpg", x, y, width, height);
 		}
 	}
 }

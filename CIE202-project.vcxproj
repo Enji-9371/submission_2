@@ -133,6 +133,7 @@
     <ClCompile Include="operations\Copy.cpp" />
     <ClCompile Include="operations\Duplicate.cpp" />
     <ClCompile Include="operations\Exit.cpp" />
+    <ClCompile Include="operations\Hide.cpp" />
     <ClCompile Include="operations\MATCH.cpp" />
     <ClCompile Include="operations\opAddcircle.cpp" />
     <ClCompile Include="operations\opAddEllip.cpp" />
@@ -151,9 +152,11 @@
     <ClCompile Include="operations\Group.cpp" />
     <ClCompile Include="operations\SendToBack.cpp" />
     <ClCompile Include="operations\START.cpp" />
+    <ClCompile Include="operations\Stick_Image.cpp" />
     <ClCompile Include="operations\SwitchToDraw.cpp" />
     <ClCompile Include="operations\SwitchToPlay.cpp" />
     <ClCompile Include="operations\Ungroup.cpp" />
+    <ClCompile Include="operations\Unhide.cpp" />
     <ClCompile Include="operations\ZoomIn.cpp" />
     <ClCompile Include="operations\ZoomOut.cpp" />
     <ClCompile Include="opmovebydrag.cpp" />
@@ -212,6 +215,7 @@
     <ClInclude Include="operations\Duplicate.h" />
     <ClInclude Include="operations\Exit.h" />
     <ClInclude Include="operations\Group.h" />
+    <ClInclude Include="operations\Hide.h" />
     <ClInclude Include="operations\MATCH.h" />
     <ClInclude Include="operations\opAddcircle.h" />
     <ClInclude Include="operations\opAddEllip.h" />
@@ -230,9 +234,11 @@
     <ClInclude Include="operations\Rotate.h" />
     <ClInclude Include="operations\SendToBack.h" />
     <ClInclude Include="operations\START.h" />
+    <ClInclude Include="operations\Stick_Image.h" />
     <ClInclude Include="operations\SwitchToDraw.h" />
     <ClInclude Include="operations\SwitchToPlay.h" />
     <ClInclude Include="operations\Ungroup.h" />
+    <ClInclude Include="operations\Unhide.h" />
     <ClInclude Include="operations\ZoomIn.h" />
     <ClInclude Include="operations\ZoomOut.h" />
     <ClInclude Include="opmovebydrag.h" />

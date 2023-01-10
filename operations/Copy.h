@@ -1,10 +1,9 @@
 #pragma once
-
 #include "operation.h"
 
-class Copy : public operation
+class Copy :public operation
 {
 public:
-	Copy(controller*);
+	Copy(controller* pCont);
 	virtual void Execute();
 };

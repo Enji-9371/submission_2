@@ -1,11 +1,14 @@
 #pragma once
 #include "operations/operation.h"
 
-class  MULTISELECT : public operation
+class MULTISELECT :public operation
 {
 private:
-    int* multiSelect;
 public:
-    MULTISELECT(controller* pApp, int& _multiSelect);
-    virtual void Execute();
+	MULTISELECT(controller* pCont);
+	virtual ~MULTISELECT();
+
+	//select a shape 
+	virtual void Execute();
+
 };

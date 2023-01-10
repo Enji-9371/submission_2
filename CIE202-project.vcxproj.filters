@@ -231,6 +231,15 @@
     <ClCompile Include="operations\SendToBack.cpp">
       <Filter>Operations</Filter>
     </ClCompile>
+    <ClCompile Include="operations\Stick_Image.cpp">
+      <Filter>Operations</Filter>
+    </ClCompile>
+    <ClCompile Include="operations\Hide.cpp">
+      <Filter>Operations</Filter>
+    </ClCompile>
+    <ClCompile Include="operations\Unhide.cpp">
+      <Filter>Operations</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -416,6 +425,15 @@
       <Filter>Operations</Filter>
     </ClInclude>
     <ClInclude Include="operations\SendToBack.h">
+      <Filter>Operations</Filter>
+    </ClInclude>
+    <ClInclude Include="operations\Stick_Image.h">
+      <Filter>Operations</Filter>
+    </ClInclude>
+    <ClInclude Include="operations\Hide.h">
+      <Filter>Operations</Filter>
+    </ClInclude>
+    <ClInclude Include="operations\Unhide.h">
       <Filter>Operations</Filter>
     </ClInclude>
   </ItemGroup>

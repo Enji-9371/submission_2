@@ -22,6 +22,21 @@ irr_polygon::irr_polygon(Point* p1, int x, GfxInfo shapeGfxInfo) :shape(shapeGfx
 	}*/
 
 }
+
+int* irr_polygon::Getshapeinfo()
+{
+	int arr[4];
+
+	arr[0] = x[0];
+	arr[1] = y[1];
+	arr[2] = sqrt(pow((x[1] - x[0]), 2) + (pow((y[1] - y[0]), 2)));
+	arr[3] = sqrt(pow((x[1] - x[0]), 2) + (pow((y[1] - y[0]), 2)));
+
+	return arr;
+
+}
+
+
 void irr_polygon::Move(Point P)
 {
 
@@ -78,23 +93,17 @@ void irr_polygon::Draw(GUI* pUI) const
 
 };
 
-shape* irr_polygon::copy()  
-{
-	shape* ptr = new irr_polygon(array_points, num, ShpGfxInfo);
-	return ptr;
-}
-
 shape* irr_polygon::duplicate(GUI* pGUI) {
 	return nullptr;
 }
 
-
-
-shape* irr_polygon::Paste(Point) //just to run
+shape* irr_polygon::clone()
 {
-	shape* ptr = nullptr;
-	return ptr;
+	shape* newShape = new irr_polygon(*this);
+
+	return newShape;
 }
+
 bool irr_polygon::point_included(int x, int y) 
 {
 	double area = 0;

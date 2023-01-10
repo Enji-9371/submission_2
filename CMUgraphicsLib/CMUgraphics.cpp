@@ -1315,9 +1315,9 @@ void window::DrawImage(const image *imgThis, const int iX, const int iY, const i
 	}
 }
 
-void window::DrawImage(const image &imgThis, const int iX, const int iY, const int iWidth, const int iHeight) {
+void window::DrawImage(const image& imgThis, const int iX, const int iY, const int iWidth, const int iHeight) {
 
-  DrawImage(&imgThis, iX, iY, iWidth, iHeight);
+	DrawImage(&imgThis, iX, iY, iWidth, iHeight);
 
 }
 

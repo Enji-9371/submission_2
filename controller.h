@@ -31,13 +31,10 @@ public:
 	operationType GetUseroperation() const;
 	operation* createOperation(operationType) ; //Creates an operation
 	void Run();
-	void SetClipboard(shape*);   //setting the clipboard
-	shape* GetClipboard()const;
 	Graph* getGraph() const;
 	void AddShape(shape* pShp);
 	int getShpCount() const;			
 	void setID(int Scount);
-	void SendtoBack(shape* pShp);
 
 	// -- Interface Management Functions
 	GUI *GetUI() const; //Return pointer to the UI

@@ -10,7 +10,7 @@ GUI::GUI()
 	wx = 5;
 	wy = 5;
 	StatusBarHeight = 50;
-	ToolBarHeight = 50;
+	ToolBarHeight = 65;
 	MenuIconWidth = 40;
 
 	DrawColor = BLACK;	//default Drawing color
@@ -120,8 +120,8 @@ operationType GUI::GetUseroperation() const
 			case ICON_SELINFO: return SelctedInfo;  break;
 			case ICON_SENDTOBACK: return SEND_BACK;  break;
 			case  ICON_DELETE: return DEL;  break;
-			
 			case ICON_DUPLICATE: return DUPLICATED;  break;
+			case ICON_SIMAGE: return STICK; break;
 			default: return EMPTY;	//A click on empty place in desgin toolbar
 			}
 		}
@@ -148,9 +148,12 @@ operationType GUI::GetUseroperation() const
 
 			switch (ClickedIconOrder)
 			{
-			case ICON_DRAW: return TO_DRAW; break;
 			case ICON_MATCH: return MATCH;  break;
 			case ICON_START: return START;  break;
+			case ICON_HIDE:  return HIDE;     break;
+			case ICON_UNHIDE:return UNHIDE;   break;
+			case ICON_DRAW:  return TO_DRAW; break;
+
 
 			default: return EMPTY; break;	//A click on empty place in desgin toolbar
 			}
@@ -172,7 +175,10 @@ operationType GUI::GetUseroperation() const
 }
 ////////////////////////////////////////////////////
 
-
+window* GUI::GetpWind() const
+{
+	return pWind;
+}
 
 //======================================================================================//
 //								Output Functions										//
@@ -250,6 +256,8 @@ void GUI::CreateDrawToolBar()
 	MenuIconImages[ICON_SENDTOBACK] = "images\\MenuIcons\\sendtoback.jpg";
 	MenuIconImages[ICON_DUPLICATE] = "images\\MenuIcons\\duplicate.jpg";
 	MenuIconImages[ICON_DELETE] = "images\\MenuIcons\\DELETE.jpg";
+	MenuIconImages[ICON_SIMAGE] = "images\\MenuIcons\\image.jpg";
+
 	//TODO: Prepare images for each menu icon and add it to the list
 
 	//Draw menu icon one image at a time
@@ -346,16 +354,17 @@ operationType GUI::CreateColorBar()
 void GUI::CreatePlayToolBar() 
 {
 	int  play_width = 1800;
-	int play_ToolBarHeight = 47;
+	int play_ToolBarHeight = 65;
 	int play_MenuIconWidth = 60;
 
 	InterfaceMode = MODE_PLAY;
 	string MenuIconImages[PLAY_ICON_COUNT];
 
-	MenuIconImages[ICON_DRAW] = "images\\MenuIcons\\Menu_SwitchToDraw.jpg";
 	MenuIconImages[ICON_MATCH] = "images\\MenuIcons\\match.jpg";
 	MenuIconImages[ICON_START] = "images\\MenuIcons\\start.jpg";
-
+	MenuIconImages[ICON_HIDE] = "images\\MenuIcons\\imagee.jpg";
+	MenuIconImages[ICON_UNHIDE] = "images\\MenuIcons\\unhide.jpg";
+	MenuIconImages[ICON_DRAW] = "images\\MenuIcons\\Menu_SwitchToDraw.jpg";
 
 
 	//TODO: Prepare images for each menu icon and add it to the list
@@ -453,7 +462,10 @@ void GUI::setCrntPenWidth(int width) 		//set current general pen width
 }
 
 
-
+void GUI::Draw_Image(string h, int k, int e, int z, int w)
+{
+	pWind->DrawImage(h, k, e, z, w);
+}
 
 
 //======================================================================================//
@@ -549,6 +561,12 @@ void GUI::DrawEllip(Point P1, Point P2, GfxInfo EllipGfxInfo) const
 		style = FRAME;
 
 	pWind->DrawEllipse(P1.x, P1.y, P2.x, P2.y, style);
+
+}
+
+void GUI::StickImage(string photo, int x, int y, int width, int height) const
+{
+	pWind->DrawImage(photo, x, y, width, height);
 
 }
 

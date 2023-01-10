@@ -21,14 +21,22 @@ bool shape::IsSelected() const
 void shape::ChngDrawClr(color Dclr)
 {	ShpGfxInfo.DrawClr = Dclr; }
 
-bool shape::IsDuplicated() const {
-	return ShpGfxInfo.isDuplicated; }
+bool shape::IsDuplicated() const 
+{
+	return ShpGfxInfo.isDuplicated; 
+}
+
+void shape::IsHidden(bool h)
+{
+	ShpGfxInfo.isHidden = h;
+}
 
 void shape::ChngFillClr(color Fclr)
 {
 	ShpGfxInfo.isFilled = true;
 	ShpGfxInfo.FillClr = Fclr;
 }
+
 void shape::ChngDrawWidth(int Wnum)
 {
 	ShpGfxInfo.BorderWdth = Wnum;

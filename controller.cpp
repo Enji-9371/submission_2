@@ -15,8 +15,8 @@
 #include"operations/ZoomIn.h"
 #include"operations/ZoomOut.h"
 #include "operations/Exit.h"
-#include"operations/Group.h"
-#include"operations/Ungroup.h"
+//#include"operations/Group.h"
+//#include"operations/Ungroup.h"
 #include"operations/Rotate.h"
 #include "operations\opsave.h"
 #include "operations/Copy.h"
@@ -30,6 +30,9 @@
 #include "GUI/GUI.h"
 #include "opSelect.h"
 #include "operations/opdelete.h"
+#include "operations/Stick_Image.h"
+#include "operations/Hide.h"
+#include "operations/Unhide.h"
 //Constructor
 controller::controller()
 {
@@ -129,12 +132,16 @@ operation* controller::createOperation(operationType OpType)
 			pOp = new opResize(this);
 			break;
 
-		case GROUP:   //group
-			pOp = new opGroup(this);
-			break;
+		//case GROUP:   //group
+		//	pOp = new opGroup(this);
+		//	break;
 
-		case UNGROUP:   //ungroup
-			pOp = new opUngroup(this);
+		//case UNGROUP:   //ungroup
+		//	pOp = new opUngroup(this);
+		//	break;
+
+		case STICK:
+			pOp = new Stick_Image(this);
 			break;
 
 		case SelctedInfo:   //change selected info 
@@ -167,7 +174,7 @@ operation* controller::createOperation(operationType OpType)
 
 
 		case MULTISELECTION : 
-			pOp = new MULTISELECT(this, multiSelect);
+			pOp = new MULTISELECT(this);
 			break; 
 
 		case SEND_BACK :
@@ -176,6 +183,14 @@ operation* controller::createOperation(operationType OpType)
 
 		case DUPLICATED :
 			pOp = new Duplicate(this);
+			break;
+
+		case HIDE:
+			pOp = new Hide(this);
+			break;
+
+		case UNHIDE:
+			pOp = new Unhide(this);
 			break;
 
 		case EXIT:
@@ -189,17 +204,6 @@ operation* controller::createOperation(operationType OpType)
 
 	return pOp;
 	
-}
-
-
-void controller::SetClipboard(shape* clip) //To store the shape coppied in the clipboard
-{
-		Clipboard = clip;
-}
-
-shape* controller::GetClipboard()const
-{
-	return Clipboard;
 }
 
 void controller::setID(int Scount)
@@ -221,33 +225,6 @@ int controller::getShpCount() const
 {
 	return Shpcount;
 }
-
-void controller::SendtoBack(shape* pShp)
-{
-	//Temporary pointer for swaping
-	shape* temp;  
-	if (pShp == shapesList[0])      //if it is the first shape
-	{
-		return;
-	}
-	for (int i = 1; i < Shpcount; i++)
-	{
-	
-		if (shapesList[i] == pShp)
-		{
-			temp = shapesList[i];
-			
-			for (int j = i; j > 0; j--)
-			{
-				shapesList[j] = shapesList[j - 1];
-			}
-			shapesList[0] = temp;
-			break;
-		}
-	}
-}
-
-
 
 //==================================================================================//
 //							Interface Management Functions							//

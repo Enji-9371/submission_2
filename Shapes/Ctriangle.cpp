@@ -16,6 +16,24 @@ void Ctriangle::Save(ofstream& OutFile)
 
 }
 
+int* Ctriangle::Getshapeinfo()
+{
+	int arr[12];
+	int y1 = Corner2.y - sqrt(pow((Corner2.x - Corner1.x), 2) + (pow((Corner2.y - Corner1.y), 2)));
+	arr[0] = Corner2.x - 4;
+	arr[1] = y1;
+	arr[5] = sqrt(pow((Corner2.x - Corner1.x), 2) + (pow((Corner2.y - Corner1.y), 2))) + 5;
+	arr[4] = sqrt(pow((Corner2.x - Corner3.x), 2) + (pow((Corner2.y - Corner3.y), 2))) + 5;
+	arr[6] = Corner1.x;
+	arr[7] = Corner1.y;
+	arr[8] = Corner2.x;
+	arr[9] = Corner2.y;
+	arr[10] = Corner3.x;
+	arr[11] = Corner3.y;
+	return arr;
+}
+
+
 void Ctriangle::Load(ifstream& Infile)
 {
 }
@@ -45,25 +63,24 @@ void Ctriangle::Draw(GUI* pUI) const
 	pUI->DrawTriangle(Corner1, Corner2, Corner3, ShpGfxInfo);
 }
 
-shape* Ctriangle::copy()
+Ctriangle::Ctriangle(const Ctriangle* copy) :shape(copy->ShpGfxInfo)
 {
-	shape* ptr = new Ctriangle(Corner1, Corner2, Corner3, ShpGfxInfo);
-	return ptr;
+	this->Corner1 = copy->Corner1;
+	this->Corner2 = copy->Corner2;
+	this->Corner3 = copy->Corner3;
+	this->ID = copy->ID;
+
 }
 
-shape* Ctriangle::Paste(Point p)
+shape* Ctriangle::clone()
 {
-	Ctriangle* triangle = new  Ctriangle(Corner1, Corner2, Corner3,  ShpGfxInfo);
+	shape* newShape = new Ctriangle(*this);
 
-	Point oo;
-	oo.x = (Corner1.x + Corner2.x) / 2;
-	oo.y = (Corner1.y + Corner2.y) / 2;
-	triangle->Corner1.x = p.x - oo.x + Corner1.x;
-	triangle->Corner1.y = p.y - oo.y + Corner1.y;
-	triangle->Corner2.x = p.x - oo.x + Corner2.x;
-	triangle->Corner2.y = p.y - oo.y + Corner2.y;
-	return triangle;
+	return newShape;
 }
+
+
+
 double Ctriangle::triarea(int x1, int x2, int x3, int y1, int y2, int y3) {
 	double triangle_area = abs(x1 * (y2 - y3) - y1 * (x2 - x3) + ((x2 * y3) - (y2 * x3))) / 2;
 	return triangle_area;

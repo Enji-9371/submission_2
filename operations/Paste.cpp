@@ -8,30 +8,11 @@ Paste::Paste(controller* pCont) :operation(pCont)
 
 void Paste::Execute()
 {
-	GUI* pUI = pControl->GetUI();
-
-	shape* pntr1, * pntr2;
-
-	if (pControl->GetClipboard())
-	{
-		GUI* pUI = pControl->GetUI();
-
-		pUI->PrintMessage("Click on the Drawing Area to paste");
-
-		pUI->GetPointClicked(p1.x, p1.y);
-
-		pUI->ClearStatusBar();
-
-		pntr1 = pControl->GetClipboard();
-
-		pntr2 = pntr1->Paste(p1);
-
-		pControl->AddShape(pntr2);
-
-	}
-
-	else
-	{
-		pUI->PrintMessage("please copy or cut a shape first");
-	}
+	Point p1;
+	GUI* pGUI = pControl->GetUI();
+	Graph* pGraph = pControl->getGraph();
+	pGUI->PrintMessage("Click at the drawing area where you want to paste your shapes");
+	pGUI->GetPointClicked(p1.x, p1.y);
+	pGraph->paste(p1);
+	pGUI->ClearStatusBar();
 }

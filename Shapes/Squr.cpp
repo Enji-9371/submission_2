@@ -1,6 +1,7 @@
 #include "Squr.h"
 #include<fstream>
 #include "../GUI/GUI.h"
+#include "math.h"
 Squr::Squr()
 {
 }
@@ -11,7 +12,26 @@ Squr::Squr(Point P1, Point P2, GfxInfo shapeGfxInfo) :shape(shapeGfxInfo)
 	P2.y = P1.y + L / sqrt(2);
 	Corner1 = P1;
 	Corner2 = P2;
+	arrX[0] = Corner1.x;
+	arrY[0] = Corner1.y;
+	arrX[1] = Corner1.x + L;
+	arrY[1] = Corner1.y;
+	arrX[2] = Corner1.x + L;
+	arrY[2] = Corner1.y + L;
+	arrX[3] = Corner1.x;
+	arrY[3] = Corner1.y + L;
 
+}
+
+
+int* Squr::Getshapeinfo()
+{
+	int listofparameters[4];
+	listofparameters[0] = arrX[0] - 10;
+	listofparameters[1] = arrY[0] - 10;
+	listofparameters[2] = abs(arrX[0] - arrX[1]) + 15;
+	listofparameters[3] = abs(arrY[0] - arrY[2]) + 15;
+	return listofparameters;
 }
 
 //int Squr::get_id()  //getter for the id of the shape
@@ -49,19 +69,12 @@ void Squr::Save(ofstream& OutFile)
 	OutFile << " " << to_string(ShpGfxInfo.FillClr.ucRed) << " " << to_string(ShpGfxInfo.FillClr.ucGreen) << " " << to_string(ShpGfxInfo.FillClr.ucBlue) << " " << to_string(ShpGfxInfo.DrawClr.ucRed) << " " << to_string(ShpGfxInfo.DrawClr.ucGreen) << " " << to_string(ShpGfxInfo.DrawClr.ucBlue) << " " << (ShpGfxInfo.BorderWdth) << endl;
 }
 
-shape* Squr::Paste(Point p)
+shape* Squr::clone()
 {
-	Squr*squr = new  Squr(Corner1, Corner2, ShpGfxInfo);
-
-	Point oo;
-	oo.x = (Corner1.x + Corner2.x) / 2;
-	oo.y = (Corner1.y + Corner2.y) / 2;
-	squr->Corner1.x = p.x - oo.x + Corner1.x;
-	squr->Corner1.y = p.y - oo.y + Corner1.y;
-	squr->Corner2.x = p.x - oo.x + Corner2.x;
-	squr->Corner2.y = p.y - oo.y + Corner2.y;
-	return squr;
+	shape* newShape = new Squr(*this);
+	return newShape;
 }
+
 
 void Squr::Load(ifstream& Infile)
 {
@@ -85,10 +98,11 @@ void Squr::Draw(GUI* pUI) const
 	pUI->DrawSqur(Corner1, Corner2, ShpGfxInfo);
 }
 
-shape* Squr::copy()
+Squr::Squr(const Squr* copy) :shape(copy->ShpGfxInfo)
 {
-	shape* ptr = new  Squr(Corner1, Corner2, ShpGfxInfo);
-	return ptr;
+	this->Corner1 = copy->Corner1;
+	this->Corner2 = copy->Corner2;
+	this->ID = copy->ID;
 }
 
 bool Squr::point_included(int x, int y) {

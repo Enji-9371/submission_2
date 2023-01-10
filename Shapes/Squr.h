@@ -11,6 +11,8 @@ private:
 	double L;
 	double id;
 
+	int* arrX = new int;
+	int* arrY = new int;
 public:
 	Squr();
 	Squr(Point, Point, GfxInfo shapeGfxInfo);
@@ -21,9 +23,10 @@ public:
 	virtual void Save(ofstream& OutFile);
 	void Load(ifstream& Infile);
 	virtual void Draw(GUI* pUI) const;
-	virtual shape* copy();
-	virtual shape* Paste(Point);
+	Squr(const Squr* copy);
+	virtual shape* clone();
 	virtual shape* duplicate(GUI* pGUI);
+	int* Getshapeinfo();
 	virtual bool point_included(int x, int y);
 	void OPZOOM(double px, double py, double scale);
 	void ResizeShape(double scale);  	//Resize a single square

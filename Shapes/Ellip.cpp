@@ -11,10 +11,65 @@ Ellip::Ellip(Point P1, Point P2, GfxInfo shapeGfxInfo) :shape(shapeGfxInfo)
 	Corner2 = P2;
 	Center.x = (Corner1.x + Corner2.x) / 2;
 	Center.y = (Corner1.y + Corner2.y) / 2;
+	Distance = sqrt(pow((P2.x - P1.x), 2) + pow((P2.y - P1.y), 2));
 }
 
 Ellip::~Ellip()
 {}
+
+
+int* Ellip::Getshapeinfo()
+{
+	int dis = Distance;
+	int list[4];
+	if (Corner1.x < Corner2.x && Corner1.y < Corner2.y) {
+		list[0] = Corner1.x - 10;
+		list[1] = Corner1.y - 10;
+		list[2] = dis + 20;
+		list[3] = dis;
+		return list;
+	}
+	else if (Corner1.x > Corner2.x && Corner1.y < Corner2.y) {
+		list[0] = Corner2.x - 10;
+		list[1] = Corner1.y - 10;
+		list[2] = dis + 20;
+		list[3] = dis;
+		return list;
+	}
+	else if (Corner1.x > Corner2.x && Corner1.y > Corner2.y) {
+		list[0] = Corner2.x - 10;
+		list[1] = Corner2.y - 10;
+		list[2] = dis + 20;
+		list[3] = dis;
+		return list;
+	}
+	else if (Corner1.x < Corner2.x && Corner1.y > Corner2.y) {
+		list[0] = Corner1.x - 10;
+		list[1] = Corner2.y - 10;
+		list[2] = dis + 20;
+		list[3] = dis;
+		return list;
+	}
+}
+
+
+Ellip::Ellip(const Ellip* copy) :shape(copy->ShpGfxInfo)
+{
+	this->Corner1 = copy->Corner1;
+	this->Corner2 = copy->Corner2;
+	this->Center.x = copy->Center.x;
+	this->Center.y = copy->Center.y;
+	this->ID = copy->ID;
+}
+
+
+shape* Ellip::clone()
+{
+	shape* newShape = new Ellip(*this);
+
+	return newShape;
+}
+
 
 void Ellip::Save(ofstream& outFile)
 {
@@ -59,25 +114,6 @@ void Ellip::Draw(GUI* pUI) const
 	pUI->DrawEllip(Corner1, Corner2, ShpGfxInfo);
 }
 
-shape* Ellip::copy()
-{
-	shape* ptr = new  Ellip(Corner1, Corner2, ShpGfxInfo);
-	return ptr;
-}
-
-shape* Ellip::Paste(Point p)
-{
-	Ellip* ellip = new  Ellip(Corner1, Corner2, ShpGfxInfo);
-
-	Point oo;
-	oo.x = (Corner1.x + Corner2.x) / 2;
-	oo.y = (Corner1.y + Corner2.y) / 2;
-	ellip->Corner1.x = p.x - oo.x + Corner1.x;
-	ellip->Corner1.y = p.y - oo.y + Corner1.y;
-	ellip->Corner2.x = p.x - oo.x + Corner2.x;
-	ellip->Corner2.y = p.y - oo.y + Corner2.y;
-	return ellip;
-}
 bool Ellip::point_included(int x, int y)
 {
 	return true;

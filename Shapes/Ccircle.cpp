@@ -7,6 +7,7 @@ Ccircle::Ccircle(Point P1, Point P2, GfxInfo shapeGfxInfo) :shape(shapeGfxInfo)
 	center = P1;
 	border = P2;
 	rad= sqrt(((center.x - border.x) * (center.x - border.x)) + ((center.y - border.y) * (center.y - border.y)));
+
 }
 
 Ccircle::~Ccircle()
@@ -19,6 +20,22 @@ void Ccircle::Save(ofstream& OutFile)
 	OutFile << " " << to_string(ShpGfxInfo.FillClr.ucRed) << " " << to_string(ShpGfxInfo.FillClr.ucGreen) << " " << to_string(ShpGfxInfo.FillClr.ucBlue) << " " << to_string(ShpGfxInfo.DrawClr.ucRed) << " " << to_string(ShpGfxInfo.DrawClr.ucGreen) << " " << to_string(ShpGfxInfo.DrawClr.ucBlue) << " " << (ShpGfxInfo.BorderWdth) << endl;
 
 }
+
+int* Ccircle::Getshapeinfo()
+{
+	int arr[10];
+	arr[0] = center.x - rad;
+	arr[1] = center.y - rad;
+	arr[2] = center.x + rad;
+	arr[3] = center.y + rad;
+	arr[4] = rad * 2;
+	arr[5] = rad * 2;
+	arr[6] = center.x;
+	arr[7] = center.y;
+	arr[8] = rad;
+	return arr;
+}
+
 
 void Ccircle::Load(ifstream& Infile)
 {
@@ -55,16 +72,20 @@ void Ccircle::Move(Point P)
 
 
 
-shape* Ccircle::copy()  
+Ccircle::Ccircle(const Ccircle* copy) :shape(copy->ShpGfxInfo)
 {
-	shape* cir = new Ccircle(center, border, ShpGfxInfo);
-	return cir;
+	this->center = copy->center;
+	this->border = copy->border;
+	this->rad = copy->rad;
+	this->ID = copy->ID;
+
 }
 
-shape* Ccircle::Paste(Point) //just to run
+shape* Ccircle::clone()
 {
-	shape* ptr=nullptr;
-	return ptr;
+	shape* newShape = new Ccircle(*this);
+
+	return newShape;
 }
 
 void  Ccircle::OPZOOM(double px, double py, double scale)  //function to zoom in or out according to the value of the scale factor
