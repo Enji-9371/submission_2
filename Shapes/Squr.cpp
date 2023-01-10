@@ -33,7 +33,6 @@ int* Squr::Getshapeinfo()
 	return listofparameters;
 }
 
-
 void Squr::Move(Point P)
 {
 	double CenterX = (Corner1.x + Corner2.x) / 2;

@@ -307,8 +307,8 @@ class window {
     // scale an image.  Transparent images will not scale, and won't be affected by the iWidth and iHeight
     // parameters
     void DrawImage(const image* imgThis, const int iX, const int iY, const int iWidth = -1, const int iHeight = -1);
-    void DrawImage(const image& imgThis, const int iX, const int iY, const int iWidth = -1, const int iHeight = -1);
 
+    void DrawImage(const image& imgThis, const int iX, const int iY, const int iWidth = -1, const int iHeight = -1);
     // Get the color of the pixel at location (iX, iY)
     color GetColor(const int iX, const int iY);
 

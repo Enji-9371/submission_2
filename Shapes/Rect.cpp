@@ -49,7 +49,6 @@ int* Rect::Getshapeinfo()
 	}
 }
 
-
 void Rect::Move(Point P)
 {
 	

@@ -31,8 +31,6 @@ public:
 	operationType GetUseroperation() const;
 	operation* createOperation(operationType) ; //Creates an operation
 	void Run();
-	void SetClipboard(shape*);   //setting the clipboard
-	shape* GetClipboard()const;
 	Graph* getGraph() const;
 	void AddShape(shape* pShp);
 	int getShpCount() const;			

@@ -29,6 +29,8 @@ public:
 	void setCopied(shape*);
 	shape* getCopied();
 	void clearClipboard();
+	void Hide(GUI* pUI);
+	void UnHide(GUI* pUI);
 	void copy();
 	void paste(Point p);
     void Save(ofstream& outfile);	//Save all shapes to a file

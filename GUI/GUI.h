@@ -19,6 +19,7 @@ struct GfxInfo	//Graphical info common for all shapes (you may add more members)
 	int BorderWdth;	//Width of shape borders
 	bool isSelected;	//true if the shape is selected.
 	bool isDuplicated;  //true if the shape is duplicated.
+	bool isHidden;      //true if the shape is hidden
 };
 
 
@@ -100,9 +101,9 @@ class GUI
 		//TODO: Add more icons names here
 		ICON_START,          //start game icon in menu
 		ICON_MATCH,          //match icon in menu
-		ICON_DRAW,          //Draw mode icon in menu
 		ICON_HIDE,          //Hide icon in menu
 		ICON_UNHIDE,        //Unhide icon in menu
+		ICON_DRAW,          //Draw mode icon in menu
 		PLAY_ICON_COUNT		//no. of menu icons ==> This should be the last line in this enum
 
 	};
@@ -170,6 +171,7 @@ public:
 	void DrawPolygon(int* A_X, int* A_Y, int num, GfxInfo PolygonGfxInfo) const;   //Draw an Irregular polygon
 
 	///Make similar functions for drawing all other shapes.
+	void Draw_Image(string h, int k, int e, int z, int w);
 
 	
 	///Make similar functions for drawing all other shapes.

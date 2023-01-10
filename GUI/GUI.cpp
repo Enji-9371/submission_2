@@ -148,11 +148,12 @@ operationType GUI::GetUseroperation() const
 
 			switch (ClickedIconOrder)
 			{
-			case ICON_DRAW:  return TO_DRAW; break;
 			case ICON_MATCH: return MATCH;  break;
 			case ICON_START: return START;  break;
 			case ICON_HIDE:  return HIDE;     break;
 			case ICON_UNHIDE:return UNHIDE;   break;
+			case ICON_DRAW:  return TO_DRAW; break;
+
 
 			default: return EMPTY; break;	//A click on empty place in desgin toolbar
 			}
@@ -359,15 +360,11 @@ void GUI::CreatePlayToolBar()
 	InterfaceMode = MODE_PLAY;
 	string MenuIconImages[PLAY_ICON_COUNT];
 
-	MenuIconImages[ICON_DRAW] = "images\\MenuIcons\\Menu_SwitchToDraw.jpg";
 	MenuIconImages[ICON_MATCH] = "images\\MenuIcons\\match.jpg";
 	MenuIconImages[ICON_START] = "images\\MenuIcons\\start.jpg";
-	MenuIconImages[ICON_HIDE] = "images\\MenuIcons\\hide.jpg";
+	MenuIconImages[ICON_HIDE] = "images\\MenuIcons\\imagee.jpg";
 	MenuIconImages[ICON_UNHIDE] = "images\\MenuIcons\\unhide.jpg";
-
-
-
-
+	MenuIconImages[ICON_DRAW] = "images\\MenuIcons\\Menu_SwitchToDraw.jpg";
 
 
 	//TODO: Prepare images for each menu icon and add it to the list
@@ -465,7 +462,10 @@ void GUI::setCrntPenWidth(int width) 		//set current general pen width
 }
 
 
-
+void GUI::Draw_Image(string h, int k, int e, int z, int w)
+{
+	pWind->DrawImage(h, k, e, z, w);
+}
 
 
 //======================================================================================//

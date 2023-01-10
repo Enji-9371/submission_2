@@ -1,6 +1,8 @@
 #include "Graph.h"
 #include "../GUI/GUI.h"
 #include"../Shapes/Shape.h"
+#include <iostream>
+using namespace std;
 Graph::Graph()
 {
 	selectedShape = nullptr;
@@ -66,6 +68,21 @@ void Graph::paste(Point p)
 
 }
 
+void Graph::Hide(GUI* pUI) {
+
+	for (auto shapePointer : shapesList) {
+		shapePointer->IsHidden(true);
+	}
+	Draw(pUI);
+}
+
+void Graph::UnHide(GUI* pUI) {
+
+	for (auto shapePointer : shapesList) {
+		shapePointer->IsHidden(false);
+	}
+	Draw(pUI);
+}
 
 shape* Graph::GetSelected()
 {
