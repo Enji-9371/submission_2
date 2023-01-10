@@ -12,11 +12,11 @@ public:
 
 	Ccircle(Point, Point, GfxInfo shapeGfxInfo);
 	
-	
+	Ccircle();
 	virtual ~Ccircle();
 	virtual bool point_included(int x, int y);
 	virtual void Save(ofstream& OutFile);
-	void Load(ifstream& Infile);
+	virtual void Load(ifstream& Outfile);
 	virtual void Draw(GUI* pUI) const;
 	virtual void Move(Point P);
 	Ccircle(const Ccircle* copy);

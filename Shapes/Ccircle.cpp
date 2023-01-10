@@ -10,6 +10,9 @@ Ccircle::Ccircle(Point P1, Point P2, GfxInfo shapeGfxInfo) :shape(shapeGfxInfo)
 
 }
 
+Ccircle::Ccircle()
+{}
+
 Ccircle::~Ccircle()
 {}
 
@@ -37,9 +40,62 @@ int* Ccircle::Getshapeinfo()
 }
 
 
-void Ccircle::Load(ifstream& Infile)
+void Ccircle::Load(ifstream& inFile)
 {
+	type = "Circle";
+	int x;
+	string jump;
+
+	inFile >> x;
+	center.x = x;
+
+	inFile >> x;
+	center.y = x;
+
+	inFile >> x;
+
+	border.x = x;
+
+	inFile >> x;
+	border.y = x;
+
+	inFile >> x;
+	if (x == 0)
+	{
+		ShpGfxInfo.isFilled = FALSE;
+
+	}
+	else if (x == 1)
+	{
+		ShpGfxInfo.isFilled = TRUE;
+
+	}
+	inFile >> jump;
+
+	ShpGfxInfo.FillClr.ucRed = stoi(jump);
+	inFile >> jump;
+
+	ShpGfxInfo.FillClr.ucGreen = stoi(jump);
+	inFile >> jump;
+
+	ShpGfxInfo.FillClr.ucBlue = stoi(jump);
+	inFile >> jump;
+
+	ShpGfxInfo.DrawClr.ucRed = stoi(jump);
+	inFile >> jump;
+
+	ShpGfxInfo.DrawClr.ucGreen = stoi(jump);
+	inFile >> jump;
+
+	ShpGfxInfo.DrawClr.ucBlue = stoi(jump);
+	inFile >> x;
+
+	ShpGfxInfo.BorderWdth = x;
+
+	ShpGfxInfo.isSelected = FALSE;
+
 }
+
 
 
 void Ccircle::Draw(GUI* pUI) const

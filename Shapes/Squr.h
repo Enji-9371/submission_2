@@ -21,7 +21,7 @@ public:
 	void set_id(double n_id);
 	virtual void Move(Point P);
 	virtual void Save(ofstream& OutFile);
-	void Load(ifstream& Infile);
+	virtual void Load(ifstream& inFile);
 	virtual void Draw(GUI* pUI) const;
 	Squr(const Squr* copy);
 	virtual shape* clone();

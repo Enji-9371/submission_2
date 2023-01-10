@@ -12,10 +12,11 @@ private:
 	Point Corner3;
 	Point Center;
 public:
+	Ctriangle();
 	Ctriangle(Point, Point, Point, GfxInfo shapeGfxInfo);
 	virtual ~Ctriangle();
 	virtual void Save(ofstream& OutFile);
-	void Load(ifstream& Infile);
+	virtual void Load(ifstream& Outfile);
 	Ctriangle(const Ctriangle* copy);
 	int* Getshapeinfo();
 	virtual void Draw(GUI* pUI) const;

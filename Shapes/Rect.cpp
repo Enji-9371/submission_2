@@ -68,8 +68,59 @@ void Rect::Save(ofstream& OutFile)
 
 }
 
-void Rect::Load(ifstream& Infile)
+void Rect::Load(ifstream& inFile)
 {
+	type = "Rect";
+	int x;
+	string jump;
+
+	inFile >> x;
+	Corner1.x = x;
+
+	inFile >> x;
+	Corner1.y = x;
+
+	inFile >> x;
+
+	Corner2.x = x;
+
+	inFile >> x;
+	Corner2.y = x;
+
+	inFile >> x;
+	if (x == 0)
+	{
+		ShpGfxInfo.isFilled = FALSE;
+
+	}
+	else if (x == 1)
+	{
+		ShpGfxInfo.isFilled = TRUE;
+
+	}
+	inFile >> jump;
+
+	ShpGfxInfo.FillClr.ucRed = stoi(jump);
+	inFile >> jump;
+
+	ShpGfxInfo.FillClr.ucGreen = stoi(jump);
+	inFile >> jump;
+
+	ShpGfxInfo.FillClr.ucBlue = stoi(jump);
+	inFile >> jump;
+
+	ShpGfxInfo.DrawClr.ucRed = stoi(jump);
+	inFile >> jump;
+
+	ShpGfxInfo.DrawClr.ucGreen = stoi(jump);
+	inFile >> jump;
+
+	ShpGfxInfo.DrawClr.ucBlue = stoi(jump);
+	inFile >> x;
+
+	ShpGfxInfo.BorderWdth = x;
+
+	ShpGfxInfo.isSelected = FALSE;
 }
 
 

@@ -13,7 +13,7 @@ public:
 	Rect(Point , Point, GfxInfo shapeGfxInfo );
 	virtual ~Rect();
 	virtual void Save(ofstream& OutFile);
-	void Load(ifstream& Infile);
+	virtual void Load(ifstream& inFile);
 	Rect(const Rect* copy);
 	virtual shape* clone();
 	virtual void Move(Point P);

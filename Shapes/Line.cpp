@@ -61,16 +61,61 @@ void Line::Save(ofstream& OutFile)
 
 }
 
-void Line::Load(ifstream& Infile)
+void Line::Load(ifstream& inFile)
 {
-	string DrawColor;
-	Infile >> ID >> Corner1.x >> Corner1.y >> Corner2.x >> Corner2.y >> DrawColor;
-	GfxInfo info;
-	Infile >> info.isSelected;
-	Infile >> info.DrawClr.ucBlue;
-	Infile >> info.DrawClr.ucGreen;
-	Infile >> info.DrawClr.ucRed;
+	type = "line";
+	int x;
+	string jump;
+
+	inFile >> x;
+	Corner1.x = x;
+
+	inFile >> x;
+	Corner1.y = x;
+
+	inFile >> x;
+
+	Corner2.x = x;
+
+	inFile >> x;
+	Corner2.y = x;
+
+	inFile >> x;
+	if (x == 0)
+	{
+		ShpGfxInfo.isFilled = FALSE;
+
+	}
+	else if (x == 1)
+	{
+		ShpGfxInfo.isFilled = TRUE;
+
+	}
+	inFile >> jump;
+
+	ShpGfxInfo.FillClr.ucRed = stoi(jump);
+	inFile >> jump;
+
+	ShpGfxInfo.FillClr.ucGreen = stoi(jump);
+	inFile >> jump;
+
+	ShpGfxInfo.FillClr.ucBlue = stoi(jump);
+	inFile >> jump;
+
+	ShpGfxInfo.DrawClr.ucRed = stoi(jump);
+	inFile >> jump;
+
+	ShpGfxInfo.DrawClr.ucGreen = stoi(jump);
+	inFile >> jump;
+
+	ShpGfxInfo.DrawClr.ucBlue = stoi(jump);
+	inFile >> x;
+
+	ShpGfxInfo.BorderWdth = x;
+
+	ShpGfxInfo.isSelected = FALSE;
 }
+
 
 void Line::Draw(GUI* pUI) const
 {

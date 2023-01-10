@@ -2,6 +2,13 @@
 #include "../GUI/GUI.h"
 #include"../Shapes/Shape.h"
 #include "../controller.h"
+#include "Line.h"
+#include "Squr.h"
+#include "Rect.h"
+#include "Ellip.h"
+#include "Cregpolygon.h"
+#include "Ctriangle.h"
+#include "Ccircle.h"
 #include <iostream>
 using namespace std;
 Graph::Graph()
@@ -138,14 +145,90 @@ void Graph::Draw(GUI* pUI) const
 	}
 }
 
-void Graph::Save(ofstream& outfile) {
-	int sv = shapesList.size();
-	outfile << " Shape_ Type  shape_ID  Shape_parameters " << endl; 
-	for (int i = 0; i < sv; i++) {
-		shapesList[i]->Save(outfile);
+void Graph::Save(ofstream& outfile)
+{
+	outfile << shapesList.size() << endl;
+	for (auto& shapePointer : shapesList)
+	{
+		shapePointer->Save(outfile);
+		shapePointer->setSaved();
+
 	}
 
+	outfile.close();
 }
+
+void Graph::load(ifstream& inputfile, GUI* pUI, Graph* pGr)
+{
+	string x;
+	string type;
+	int noOfShapes;
+
+	inputfile >> noOfShapes;
+	int y = 0;
+	shape* p;
+
+	for (int i = 0; i < noOfShapes; i++)
+	{
+		y++;
+
+		string z;
+		inputfile >> type;
+		if (type == "Line")
+		{
+			p = new Line();
+			p->Load(inputfile);
+			Addshape(p);
+		}
+		else if (type == "Circle")
+		{
+			p = new Ccircle();
+
+			p->Load(inputfile);
+
+			Addshape(p);
+		}
+		else if (type == "Triangle")
+		{
+			p = new Ctriangle();
+			p->Load(inputfile);
+			Addshape(p);
+		}
+		else if (type == "Rect")
+		{
+
+			p = new Rect();
+			p->Load(inputfile);
+			Addshape(p);
+		}
+		else if (type == "RegPoly")
+		{
+			p = new polygon();
+			p->Load(inputfile);
+			Addshape(p);
+
+		}
+		else if (type == "Square")
+		{
+			p = new Squr();
+			p->Load(inputfile);
+			Addshape(p);
+		}
+		else if (type == "Ellipse")
+		{
+			p = new Ellip();
+			p->Load(inputfile);
+			Addshape(p);
+		}
+
+
+
+
+	}
+
+	inputfile.close();
+}
+
 
 
 
