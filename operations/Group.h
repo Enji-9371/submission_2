@@ -1,15 +1,10 @@
 #pragma once
 #include "operation.h"
-
-//group class
-class opGroup : public operation
+class Group : public operation
 {
 public:
-	opGroup(controller* pCont);
-	virtual ~opGroup();
-
+	Group(controller* pCont);
 	virtual void Execute();
-
 };
 
 

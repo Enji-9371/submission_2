@@ -27,6 +27,7 @@ public:
 	shape* GetSelectedShape() const;
 	void UnselectShapes();
 	void Sendtoback(GUI* pUI);
+
 	void setCopied(shape*);
 	shape* getCopied();
 	void clearClipboard();

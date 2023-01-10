@@ -1,16 +1,12 @@
 #include "Group.h"
-#include "..\controller.h"
-#include "../CMUgraphicsLib/CMUgraphics.h"
+#include "../controller.h"
+#include "../GUI/GUI.h"
 
-opGroup::opGroup(controller* pCont) :operation(pCont)
-{}
-opGroup::~opGroup()
+Group::Group(controller* pCont) :operation(pCont)
 {}
 
-//Execute the operation
-void opGroup::Execute()
+void Group::Execute()
 {
-
-
-
+	Graph* pGr = pControl->getGraph();
+	//pGr->Groupshapes();
 }
