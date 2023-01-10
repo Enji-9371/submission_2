@@ -160,7 +160,7 @@ void Ellip::Draw(GUI* pUI) const
 
 bool Ellip::point_included(int x, int y)
 {
-	return;
+	return NULL;
 }
 
 shape* Ellip::duplicate(GUI* pGUI) {
