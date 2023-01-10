@@ -13,8 +13,8 @@ public:
 	Ellip();
 	Ellip (Point, Point, GfxInfo shapeGfxInfo);
 	virtual ~Ellip();
-	void Save(ofstream& OutFile);
-	void Load(ifstream& Infile);
+	virtual void Save(ofstream& OutFile);
+	virtual void Load(ifstream& Outfile);
 	virtual bool point_included(int x, int y);
 	virtual shape* duplicate(GUI* pGUI);
 	Ellip(const Ellip* copy);

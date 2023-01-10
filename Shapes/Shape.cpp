@@ -18,6 +18,17 @@ void shape::SetSelected(bool s)
 bool shape::IsSelected() const
 {	return ShpGfxInfo.isSelected; }
 
+void shape::setSaved()
+{
+	ShpGfxInfo.isSaved = true;
+}
+
+bool shape::IsSaved()
+{
+	return ShpGfxInfo.isSaved;
+}
+
+
 void shape::ChngDrawClr(color Dclr)
 {	ShpGfxInfo.DrawClr = Dclr; }
 

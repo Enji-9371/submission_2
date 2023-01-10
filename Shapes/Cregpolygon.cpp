@@ -16,6 +16,11 @@ polygon::polygon(Point p1, Point p2, int i, GfxInfo shapeGfxInfo) :shape(shapeGf
 polygon::~polygon()
 {}
 
+
+polygon::polygon()
+{
+}
+
 int* polygon::Getshapeinfo()
 {
 	int arr[4];
@@ -114,20 +119,62 @@ void polygon::Save(ofstream& outFile)
 	outFile << info.DrawClr.ucRed;
 }
 
-void polygon::Load(ifstream& Infile)
+void polygon::Load(ifstream& inFile)
 {
-	string DrawColor;
-	Infile >> ID >> DrawColor;
-	GfxInfo info;
-	Infile >> info.BorderWdth;
-	Infile >> info.isFilled;
-	Infile >> info.isSelected;
-	Infile >> info.FillClr.ucBlue;
-	Infile >> info.FillClr.ucGreen;
-	Infile >> info.FillClr.ucRed;
-	Infile >> info.DrawClr.ucBlue;
-	Infile >> info.DrawClr.ucGreen;
-	Infile >> info.DrawClr.ucRed;
+	type = "RegPoly";
+	int x;
+	string jump;
+
+	inFile >> x;
+	num = x;
+	inFile >> x;
+	center.x = x;
+
+	inFile >> x;
+	center.y = x;
+
+	inFile >> x;
+
+	point1.x = x;
+
+	inFile >> x;
+	point1.y = x;
+
+	inFile >> x;
+	if (x == 0)
+	{
+		ShpGfxInfo.isFilled = FALSE;
+
+	}
+	else if (x == 1)
+	{
+		ShpGfxInfo.isFilled = TRUE;
+
+	}
+	inFile >> jump;
+
+	ShpGfxInfo.FillClr.ucRed = stoi(jump);
+	inFile >> jump;
+
+	ShpGfxInfo.FillClr.ucGreen = stoi(jump);
+	inFile >> jump;
+
+	ShpGfxInfo.FillClr.ucBlue = stoi(jump);
+	inFile >> jump;
+
+	ShpGfxInfo.DrawClr.ucRed = stoi(jump);
+	inFile >> jump;
+
+	ShpGfxInfo.DrawClr.ucGreen = stoi(jump);
+	inFile >> jump;
+
+	ShpGfxInfo.DrawClr.ucBlue = stoi(jump);
+	inFile >> x;
+
+	ShpGfxInfo.BorderWdth = x;
+
+	ShpGfxInfo.isSelected = FALSE;
+	
 }
 
 bool polygon::point_included(int x, int y) 

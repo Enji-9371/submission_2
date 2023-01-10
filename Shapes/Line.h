@@ -15,8 +15,8 @@ public:
 	virtual ~Line();
 	virtual bool point_included(int x, int y);
 	virtual void Save(ofstream& OutFile);
+	virtual void Load(ifstream& inFile);
 	virtual void Move(Point P);
-	void Load(ifstream& Infile);
 	int* Getshapeinfo();
 	virtual void Draw(GUI* pUI) const;
 	void OPZOOM(double px, double py, double scale);

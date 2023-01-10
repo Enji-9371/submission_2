@@ -20,6 +20,7 @@ struct GfxInfo	//Graphical info common for all shapes (you may add more members)
 	bool isSelected;	//true if the shape is selected.
 	bool isDuplicated;  //true if the shape is duplicated.
 	bool isHidden;      //true if the shape is hidden
+	bool isSaved;       //true if the shape is saved
 };
 
 

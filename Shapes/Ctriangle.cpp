@@ -16,6 +16,8 @@ void Ctriangle::Save(ofstream& OutFile)
 
 }
 
+Ctriangle::Ctriangle()
+{}
 int* Ctriangle::Getshapeinfo()
 {
 	int arr[12];
@@ -34,9 +36,66 @@ int* Ctriangle::Getshapeinfo()
 }
 
 
-void Ctriangle::Load(ifstream& Infile)
+void Ctriangle::Load(ifstream& inFile)
 {
+	type = "Triangle";
+	int x;
+	string jump;
+
+	inFile >> x;
+	Corner1.x = x;
+
+	inFile >> x;
+	Corner1.y = x;
+
+	inFile >> x;
+
+	Corner2.x = x;
+
+	inFile >> x;
+	Corner2.y = x;
+
+	inFile >> x;
+	Corner3.x = x;
+
+	inFile >> x;
+	Corner3.y = x;
+	inFile >> x;
+	if (x == 0)
+	{
+		ShpGfxInfo.isFilled = FALSE;
+
+	}
+	else if (x == 1)
+	{
+		ShpGfxInfo.isFilled = TRUE;
+
+	}
+	inFile >> jump;
+
+	ShpGfxInfo.FillClr.ucRed = stoi(jump);
+	inFile >> jump;
+
+	ShpGfxInfo.FillClr.ucGreen = stoi(jump);
+	inFile >> jump;
+
+	ShpGfxInfo.FillClr.ucBlue = stoi(jump);
+	inFile >> jump;
+
+	ShpGfxInfo.DrawClr.ucRed = stoi(jump);
+	inFile >> jump;
+
+	ShpGfxInfo.DrawClr.ucGreen = stoi(jump);
+	inFile >> jump;
+
+	ShpGfxInfo.DrawClr.ucBlue = stoi(jump);
+	inFile >> x;
+
+	ShpGfxInfo.BorderWdth = x;
+
+	ShpGfxInfo.isSelected = FALSE;
 }
+
 
 void Ctriangle::Move(Point P)
 {

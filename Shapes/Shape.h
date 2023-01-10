@@ -17,6 +17,8 @@ protected:
 public:
     shape();
 	string type; 
+	void setSaved();
+	bool IsSaved();
 	shape(GfxInfo shapeGfxInfo);
 	virtual ~shape() {}
 	void SetSelected(bool s);	//select/unselect the shape

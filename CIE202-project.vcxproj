@@ -135,6 +135,7 @@
     <ClCompile Include="operations\Duplicate.cpp" />
     <ClCompile Include="operations\Exit.cpp" />
     <ClCompile Include="operations\Hide.cpp" />
+    <ClCompile Include="operations\Load.cpp" />
     <ClCompile Include="operations\MATCH.cpp" />
     <ClCompile Include="operations\opAddcircle.cpp" />
     <ClCompile Include="operations\opAddEllip.cpp" />
@@ -218,6 +219,7 @@
     <ClInclude Include="operations\Exit.h" />
     <ClInclude Include="operations\Group.h" />
     <ClInclude Include="operations\Hide.h" />
+    <ClInclude Include="operations\Load.h" />
     <ClInclude Include="operations\MATCH.h" />
     <ClInclude Include="operations\opAddcircle.h" />
     <ClInclude Include="operations\opAddEllip.h" />

@@ -13,11 +13,12 @@ private:
 	int* y = nullptr;
 
 public:
+	polygon();
 	polygon(Point, Point, int, GfxInfo shapeGfxInfo);
 	virtual ~polygon();
 	virtual void Draw(GUI* pUI) const;
-	void Save(ofstream& OutFile);
-	void Load(ifstream& Infile);
+	virtual void Save(ofstream& OutFile);
+	virtual void Load(ifstream& Outfile);
 	virtual shape* duplicate(GUI* pGUI);
 	polygon(const polygon* copy);
 	virtual shape* clone();

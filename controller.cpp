@@ -34,6 +34,7 @@
 #include "operations/Hide.h"
 #include"CUT.h"
 #include "operations/Unhide.h"
+#include "operations/Load.h"
 //Constructor
 controller::controller()
 {
@@ -153,9 +154,10 @@ operation* controller::createOperation(operationType OpType)
 		case MOVE : 
 			pOp = new Move(this); // move by drag 
 			break;
-		//case LOAD:
-		//	pOp = new Load(this);
-		//	break;
+
+		case LOAD:
+			pOp = new opLoad(this);
+			break;
 
 		case SAVE:
 			pOp = new opSave(this);
