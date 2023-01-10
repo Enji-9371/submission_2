@@ -2,7 +2,10 @@
 #include "../GUI/GUI.h"
 
 shape::shape()
-{}
+{
+	//srand(time(NULL));
+	ID = rand() % 1000;   //certain random number for each square 
+}
 
 shape::shape(GfxInfo shapeGfxInfo)
 { 

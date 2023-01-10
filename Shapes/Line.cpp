@@ -128,5 +128,4 @@ void Line::RotateShape()  	//Rotate a single line
 	Corner2.x = Center.y + Center.x - C2y;
 	Corner1.y = C1x + Center.y - Center.x;
 	Corner2.y = C2x + Center.y - Center.x;
-
 }

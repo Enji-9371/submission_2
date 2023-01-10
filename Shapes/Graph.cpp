@@ -1,6 +1,7 @@
 #include "Graph.h"
 #include "../GUI/GUI.h"
 #include"../Shapes/Shape.h"
+#include "../controller.h"
 Graph::Graph()
 {
 	selectedShape = nullptr;
@@ -135,5 +136,28 @@ void Graph::Duplicated(GUI* pGUI)
 	for (int i = 0; i < size; i++) {
 
 		shapesList.push_back(shapesList[i]->duplicate(pGUI));
+	}
+}
+
+bool Graph::MATCH(shape*  shape1, shape*  shape2)
+{
+	for (int i = 0; i < shapesList.size(); i++)
+	{
+		if (shapesList[i]->getID() == shape1->getID())
+		{
+			for (int j = 0; j < shapesList.size(); j++)
+			{
+				if (shapesList[j]->getID() == shape2->getID())
+				{
+					//pUI->PrintMessage("matched");
+					return true;
+				}
+				else
+				{
+					//pUI->PrintMessage("not matched");
+					return false;
+				}
+			}
+		}
 	}
 }

@@ -1,5 +1,7 @@
 #pragma once
 #include "operation.h"
+#include"../Shapes/Shape.h"
+#include"../Shapes/Graph.h"
 
 //match cards class
 class opMatch : public operation

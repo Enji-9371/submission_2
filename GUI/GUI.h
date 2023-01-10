@@ -26,6 +26,12 @@ struct GfxInfo	//Graphical info common for all shapes (you may add more members)
 
 class GUI
 {
+	enum  Mmatch //enum for the output of  match function
+	{
+		MATCHED,
+		NOT_MATCHED
+	};
+
 	enum GUI_MODE	//Graphical user interface mode
 	{
 		MODE_DRAW,	//Drawing mode (startup mode)

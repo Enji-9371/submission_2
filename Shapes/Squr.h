@@ -9,10 +9,14 @@ private:
 	Point Corner2;
 	Point center;
 	double L;
+	double id;
+
 public:
 	Squr();
 	Squr(Point, Point, GfxInfo shapeGfxInfo);
 	virtual ~Squr();
+	int get_id();
+	void set_id(double n_id);
 	virtual void Move(Point P);
 	virtual void Save(ofstream& OutFile);
 	void Load(ifstream& Infile);

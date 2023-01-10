@@ -1,5 +1,6 @@
 #pragma once
 #include "Shape.h"
+#include "../GUI/GUI.h"
 #include <fstream>
 #include <vector>
 using namespace std;
@@ -33,5 +34,6 @@ public:
 	void ROTATE();  //rotate a single shape by 90 deg
 	void Duplicated(GUI* pGUI);
 	void DeleteShapeFromList();
+	bool MATCH(shape* shape1, shape* shape2);
 
 };

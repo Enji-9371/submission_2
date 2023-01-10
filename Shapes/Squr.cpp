@@ -11,9 +11,17 @@ Squr::Squr(Point P1, Point P2, GfxInfo shapeGfxInfo) :shape(shapeGfxInfo)
 	P2.y = P1.y + L / sqrt(2);
 	Corner1 = P1;
 	Corner2 = P2;
+
 }
 
-
+//int Squr::get_id()  //getter for the id of the shape
+//{
+//	return id;
+//}
+//void Squr::set_id(double n_id)  //setter for the id of the shape
+//{
+//	id = n_id;
+//}
 void Squr::Move(Point P)
 {
 	double CenterX = (Corner1.x + Corner2.x) / 2;

@@ -11,6 +11,7 @@ void opStart::Execute()
 {
 	//Get a Pointer to the Input / Output Interfaces
 	GUI* pUI = pControl->GetUI();
+	Graph* pGraph = pControl->getGraph();
 	pUI->PrintMessage("Start The Game");
 
 
