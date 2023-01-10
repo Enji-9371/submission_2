@@ -38,8 +38,9 @@ public:
 
 	void copy();
 	void paste(Point p);
-	void Save(ofstream& outfile);	//Save all shapes to a file
-	void load(ifstream& inputfile, GUI* pUI, Graph* pGr);	//Load all shapes from a file
+    void Save(ofstream& outfile);	//Save all shapes to a file
+	void CCUT();
+	void Load(ifstream& inputfile); //Load all shapes from a file
 	void stickimage(GUI* pGUI) const;
 	void ZOOM_IN_OUT(double scale, double X, double Y);  //zooming function
 	void RESIZE(double n);              //RESIZE FUNCTION

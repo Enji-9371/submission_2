@@ -23,6 +23,7 @@ enum operationType //The operations supported (you can add more if needed)
 	RESIZE,			//Resize a shape(s)
 	ROTATE,			//Rotate a shape(s)
 	SEND_BACK,		//Send a shape to the back of all shapes
+	CUTT,
 	BRNG_FRNT,		//Bring a shape to the front of all shapes
 	SAVE,			//Save the whole graph to a file
 	LOAD,			//Load a graph from a file

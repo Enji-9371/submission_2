@@ -1,11 +1,11 @@
 #pragma once
 #include "operations/operation.h"
 
-class opMove : public operation
+class Move : public operation
 {
 public:
-	opMove(controller* pCont);
-	virtual ~opMove();
+	Move(controller* pCont);
+	virtual ~Move();
 	virtual void Execute();
 
 };

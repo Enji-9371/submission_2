@@ -119,6 +119,7 @@ operationType GUI::GetUseroperation() const
 			case ICON_MOVEBYDRAG: return MOVE; break;
 			case ICON_SELINFO: return SelctedInfo;  break;
 			case ICON_SENDTOBACK: return SEND_BACK;  break;
+			case ICON_CUT: return CUTT; 
 			case  ICON_DELETE: return DEL;  break;
 			case ICON_DUPLICATE: return DUPLICATED;  break;
 			case ICON_SIMAGE: return STICK; break;
@@ -257,7 +258,7 @@ void GUI::CreateDrawToolBar()
 	MenuIconImages[ICON_DUPLICATE] = "images\\MenuIcons\\duplicate.jpg";
 	MenuIconImages[ICON_DELETE] = "images\\MenuIcons\\DELETE.jpg";
 	MenuIconImages[ICON_SIMAGE] = "images\\MenuIcons\\image.jpg";
-
+	MenuIconImages[ICON_CUT] = "images\\MenuIcons\\cut.jpg";
 	//TODO: Prepare images for each menu icon and add it to the list
 
 	//Draw menu icon one image at a time

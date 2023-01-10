@@ -64,14 +64,15 @@ class GUI
 		ICON_LOAD,      // Load icon in menu
 		ICON_SAVE,      // Save icon in menu
 		ICON_MOVEBYDRAG,
-		ICON_DELETE , 
+		ICON_DELETE,
 		ICON_DUPLICATE,
 		ICON_SELECT,
 		ICON_MULTISELECTION,
 		ICON_SENDTOBACK,
-		
-	
+
+
 		ICON_COPY,
+		ICON_CUT ,
 		ICON_PASTE,
 		
 		ICON_PLAY,      //Play mode icon in menu

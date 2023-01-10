@@ -240,7 +240,7 @@
     <ClCompile Include="operations\Unhide.cpp">
       <Filter>Operations</Filter>
     </ClCompile>
-    <ClCompile Include="operations\Load.cpp">
+    <ClCompile Include="CUT.cpp">
       <Filter>Operations</Filter>
     </ClCompile>
   </ItemGroup>
@@ -439,7 +439,7 @@
     <ClInclude Include="operations\Unhide.h">
       <Filter>Operations</Filter>
     </ClInclude>
-    <ClInclude Include="operations\Load.h">
+    <ClInclude Include="CUT.h">
       <Filter>Operations</Filter>
     </ClInclude>
   </ItemGroup>
