@@ -35,7 +35,6 @@ public:
 	void AddShape(shape* pShp);
 	int getShpCount() const;			
 	void setID(int Scount);
-	void SendtoBack(shape* pShp);
 
 	// -- Interface Management Functions
 	GUI *GetUI() const; //Return pointer to the UI

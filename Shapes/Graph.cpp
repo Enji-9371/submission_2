@@ -84,6 +84,41 @@ void Graph::UnHide(GUI* pUI) {
 	Draw(pUI);
 }
 
+
+void Graph::Sendtoback(GUI* pUI)
+{
+	if (GetSelected() == nullptr) {
+		pUI->PrintMessage("Select a shape first ");
+	}
+	else if (GetSelected() != nullptr)
+	{
+		pUI->PrintMessage("Select the shape to send back : ");
+		shape* temp = shapesList[0];
+		shapesList[0] = GetSelected();
+		for (int i = 0; i < shapesList.size(); i++) {
+			if (shapesList[i] == GetSelected()) {
+				shapesList[0] = GetSelected();
+				shapesList[i] = temp;
+			}
+
+		}
+		for (auto shapePointer : shapesList) {
+			shapePointer->Draw(pUI);
+		}
+
+		pUI->ClearStatusBar();
+	}
+
+	else if (GetSelected() == nullptr)
+	{
+		pUI->PrintMessage("Please select a shape first");
+		color col = pUI->getCrntFillColor();
+
+
+	}
+}
+
+
 shape* Graph::GetSelected()
 {
 	return selectedShape;

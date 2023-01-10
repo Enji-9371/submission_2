@@ -1,18 +1,13 @@
 #include "SendToBack.h"
-#include"../controller.h"
-SendToBack::SendToBack(controller* pCont) :operation(pCont)
-{}
+#include "../controller.h"
+#include "../GUI/GUI.h"
+#include <fstream>
+SendToBack::SendToBack(controller* pCont) : operation(pCont) {}
 
-void SendToBack::Execute()
+void SendToBack::Execute() 
 {
 	GUI* pUI = pControl->GetUI();
 	Graph* pGraph = pControl->getGraph();
-	SelectedFig = pGraph->GetSelected();
-	if (!SelectedFig)
-		pUI->PrintMessage("Error: NO FIGURE SELECTED!");
-	else
-	{
-		pControl->SendtoBack(SelectedFig);
-	}
+	pGraph->Sendtoback(pUI);
+	pUI->PrintMessage("Shape send to back");
 }
-

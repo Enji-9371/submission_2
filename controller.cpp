@@ -226,33 +226,6 @@ int controller::getShpCount() const
 	return Shpcount;
 }
 
-void controller::SendtoBack(shape* pShp)
-{
-	//Temporary pointer for swaping
-	shape* temp;  
-	if (pShp == shapesList[0])      //if it is the first shape
-	{
-		return;
-	}
-	for (int i = 1; i < Shpcount; i++)
-	{
-	
-		if (shapesList[i] == pShp)
-		{
-			temp = shapesList[i];
-			
-			for (int j = i; j > 0; j--)
-			{
-				shapesList[j] = shapesList[j - 1];
-			}
-			shapesList[0] = temp;
-			break;
-		}
-	}
-}
-
-
-
 //==================================================================================//
 //							Interface Management Functions							//
 //==================================================================================//
