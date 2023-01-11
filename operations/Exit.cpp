@@ -55,3 +55,10 @@ void Exit::Execute()
 		delete pUI;
 	}
 }
+
+void Exit::Undo()
+{
+}
+void Exit::Redo()
+{
+}

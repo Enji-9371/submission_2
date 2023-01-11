@@ -6,4 +6,7 @@ public:
 	opAddREGPolygon(controller* pCont);
 	  virtual ~opAddREGPolygon();
 	  virtual void Execute();
+	  virtual void Undo() override;
+	  virtual void Redo() override;
+
 };

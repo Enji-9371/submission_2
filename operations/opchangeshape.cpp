@@ -232,11 +232,14 @@ void opChngSelInfo::Execute()
 }
 
 
+void opPenWidth::Undo() {}
+void opPenWidth::Redo() {}
 
+void opChngSelInfo::Undo() {}
+void opChngSelInfo::Redo() {}
 
-
-
-
+void opClrPlt::Undo() {}
+void opClrPlt::Redo() {}
 
 
 

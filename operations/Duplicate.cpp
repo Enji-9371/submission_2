@@ -12,3 +12,14 @@ void Duplicate::Execute()
 	GUI* pGUI = pControl->GetUI();
 	pGr->Duplicated(pGUI);
 }
+
+void Duplicate::Undo()
+{
+	Graph* pGr = pControl->getGraph();
+	pGr->AddToUndoStack();
+}
+void Duplicate::Redo()
+{
+	Graph* pGr = pControl->getGraph();
+	pGr->AddtoShapeList();
+}

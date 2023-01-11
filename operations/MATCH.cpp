@@ -20,3 +20,14 @@ void opMatch::Execute()
 	//pGraph->MATCH( shape1, shape2);
 	
 }
+
+void opMatch::Undo()
+{
+	Graph* pGr = pControl->getGraph();
+	pGr->AddToUndoStack();
+}
+void opMatch::Redo()
+{
+	Graph* pGr = pControl->getGraph();
+	pGr->AddtoShapeList();
+}

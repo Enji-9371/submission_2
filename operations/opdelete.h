@@ -15,4 +15,9 @@ class opdelete : public operation
 public:
 	opdelete(controller* pCont); // pointer from controller type 
 	virtual void Execute(); // virtual void execuute function
+
+	virtual void Undo() override;
+	virtual void Redo() override;
+
+
 };

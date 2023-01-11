@@ -18,3 +18,14 @@ void opZoomIn::Execute()
 	pGraph->ZOOM_IN_OUT(1.2, 640, 310);   //zoom in and out acording to the scale factor around the origin
 
 }
+
+void opZoomIn::Undo()
+{
+	Graph* pGr = pControl->getGraph();
+	pGr->AddToUndoStack();
+}
+void opZoomIn::Redo()
+{
+	Graph* pGr = pControl->getGraph();
+	pGr->AddtoShapeList();
+}

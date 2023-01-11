@@ -12,6 +12,9 @@ public:
 
 	//Add color palette to the controller
 	virtual void Execute();
+	virtual void Undo() override;
+	virtual void Redo() override;
+
 
 };
 
@@ -27,6 +30,8 @@ public:
 
 	//Add changing pen width order to the controller
 	virtual void Execute();
+	virtual void Undo() override;
+	virtual void Redo() override;
 
 };
 
@@ -41,5 +46,7 @@ public:
 
 	//Add color palette to the controller
 	virtual void Execute();
+	virtual void Undo() override;
+	virtual void Redo() override;
 
 };

@@ -11,3 +11,14 @@ void Hide::Execute() {
 
 	pGr->Hide_shapes(pUI);
 }
+
+void Hide::Undo()
+{
+	Graph* pGr = pControl->getGraph();
+	pGr->AddToUndoStack();
+}
+void Hide::Redo()
+{
+	Graph* pGr = pControl->getGraph();
+	pGr->AddtoShapeList();
+}

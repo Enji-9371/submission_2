@@ -46,3 +46,14 @@ void opStart::Execute()
 		}
 	}
 }
+
+void opStart::Undo()
+{
+	Graph* pGr = pControl->getGraph();
+	pGr->AddToUndoStack();
+}
+void opStart::Redo()
+{
+	Graph* pGr = pControl->getGraph();
+	pGr->AddtoShapeList();
+}

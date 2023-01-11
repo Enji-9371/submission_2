@@ -52,3 +52,15 @@ void opAddSqur::Execute()
 	pGr->Addshape(R);
 
 }
+
+
+void opAddSqur::Undo()
+{
+	Graph* pGr = pControl->getGraph();
+	pGr->AddToUndoStack();
+}
+void opAddSqur::Redo()
+{
+	Graph* pGr = pControl->getGraph();
+	pGr->AddtoShapeList();
+}

@@ -25,3 +25,14 @@ void opResize::Execute()   //resize a single shape
 		pUI->PrintMessage("UNSUPPORTED OPERATION!");
 	}
 }
+
+void opResize::Undo()
+{
+	Graph* pGr = pControl->getGraph();
+	pGr->AddToUndoStack();
+}
+void opResize::Redo()
+{
+	Graph* pGr = pControl->getGraph();
+	pGr->AddtoShapeList();
+}

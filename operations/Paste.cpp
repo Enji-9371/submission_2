@@ -16,3 +16,14 @@ void Paste::Execute()
 	pGraph->paste(p1);
 	pGUI->ClearStatusBar();
 }
+
+void Paste::Undo()
+{
+	Graph* pGr = pControl->getGraph();
+	pGr->AddToUndoStack();
+}
+void Paste::Redo()
+{
+	Graph* pGr = pControl->getGraph();
+	pGr->AddtoShapeList();
+}

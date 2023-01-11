@@ -11,3 +11,14 @@ void UnHide::Execute() {
 
 	pGr->Unhide_shapes(pUI);
 }
+
+void UnHide::Undo()
+{
+	Graph* pGr = pControl->getGraph();
+	pGr->AddToUndoStack();
+}
+void UnHide::Redo()
+{
+	Graph* pGr = pControl->getGraph();
+	pGr->AddtoShapeList();
+}

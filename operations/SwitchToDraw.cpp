@@ -23,3 +23,14 @@ void  SwitchToDraw::Execute()
 
 	pUI->ClearStatusBar();
 }
+
+void SwitchToDraw::Undo()
+{
+	Graph* pGr = pControl->getGraph();
+	pGr->AddToUndoStack();
+}
+void SwitchToDraw::Redo()
+{
+	Graph* pGr = pControl->getGraph();
+	pGr->AddtoShapeList();
+}
