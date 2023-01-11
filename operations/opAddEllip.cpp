@@ -52,3 +52,14 @@ void opAddEllip::Execute()
 	pGr->Addshape(R);
 
 }
+
+void opAddEllip::Undo()
+{
+	Graph* pGr = pControl->getGraph();
+	pGr->AddToUndoStack();
+}
+void opAddEllip::Redo()
+{
+	Graph* pGr = pControl->getGraph();
+	pGr->AddtoShapeList();
+}

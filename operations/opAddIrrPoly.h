@@ -8,6 +8,9 @@ public:
 	virtual ~opAdd_IIR_POLYGON();
 
 	virtual void Execute();
+	virtual void Undo() override;
+	virtual void Redo() override;
+
 
 };
 

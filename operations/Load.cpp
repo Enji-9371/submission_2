@@ -53,3 +53,14 @@ void opLoad::setFilename(string f)
 {
 	filename = f;
 }
+
+void opLoad::Undo()
+{
+	Graph* pGr = pControl->getGraph();
+	pGr->AddToUndoStack();
+}
+void opLoad::Redo()
+{
+	Graph* pGr = pControl->getGraph();
+	pGr->AddtoShapeList();
+}

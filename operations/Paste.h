@@ -7,4 +7,7 @@ private:
 public:
 	Paste(controller* pCont);
 	virtual void Execute();
+	virtual void Undo() override;
+	virtual void Redo() override;
+
 };

@@ -7,4 +7,6 @@ public:
 	Hide(controller* pCont);
 	virtual ~Hide();
 	virtual void Execute();
+	virtual void Undo() override;
+	virtual void Redo() override;
 };

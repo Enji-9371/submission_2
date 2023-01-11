@@ -42,3 +42,15 @@ void opAddTriangle::Execute()
 	pGr->Addshape(T);
 
 }
+
+
+void opAddTriangle::Undo()
+{
+	Graph* pGr = pControl->getGraph();
+	pGr->AddToUndoStack();
+}
+void opAddTriangle::Redo()
+{
+	Graph* pGr = pControl->getGraph();
+	pGr->AddtoShapeList();
+}

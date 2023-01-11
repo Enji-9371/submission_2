@@ -51,3 +51,14 @@ void opAddCircle::Execute()
 	pGr->Addshape(R);
 
 }
+
+void opAddCircle::Undo()
+{
+	Graph* pGr = pControl->getGraph();
+	pGr->AddToUndoStack();
+}
+void opAddCircle::Redo()
+{
+	Graph* pGr = pControl->getGraph();
+	pGr->AddtoShapeList();
+}

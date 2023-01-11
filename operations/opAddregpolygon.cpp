@@ -50,3 +50,14 @@ void opAddREGPolygon::Execute()
 
 	
 }
+
+void opAddREGPolygon::Undo()
+{
+	Graph* pGr = pControl->getGraph();
+	pGr->AddToUndoStack();
+}
+void opAddREGPolygon::Redo()
+{
+	Graph* pGr = pControl->getGraph();
+	pGr->AddtoShapeList();
+}

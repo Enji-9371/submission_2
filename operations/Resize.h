@@ -8,6 +8,9 @@ class opResize : public operation
     	opResize(controller* pCont);
     	virtual ~opResize();
 	    virtual void Execute();
+        virtual void Undo() override;
+        virtual void Redo() override;
+
 };
 
 

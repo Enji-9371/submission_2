@@ -24,3 +24,14 @@ void  SwitchToPlay::Execute()
 	pUI->ClearStatusBar();
 
 }
+
+void SwitchToPlay::Undo()
+{
+	Graph* pGr = pControl->getGraph();
+	pGr->AddToUndoStack();
+}
+void SwitchToPlay::Redo()
+{
+	Graph* pGr = pControl->getGraph();
+	pGr->AddtoShapeList();
+}

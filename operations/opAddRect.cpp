@@ -53,3 +53,13 @@ void opAddRect::Execute()
 
 }
 
+void opAddRect::Undo()
+{
+	Graph* pGr = pControl->getGraph();
+	pGr->AddToUndoStack();
+}
+void opAddRect::Redo()
+{
+	Graph* pGr = pControl->getGraph();
+	pGr->AddtoShapeList();
+}

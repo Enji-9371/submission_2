@@ -13,4 +13,9 @@ void Copy::Execute()
     pGraph->copy();
 	pGUI->PrintMessage("Selected shapes have been copied");
 }
-
+void Copy::Undo()
+{
+}
+void Copy::Redo()
+{
+}

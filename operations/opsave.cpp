@@ -50,3 +50,15 @@ void opSave::Execute()
 	pGr->Save(file1);
 
 }
+
+
+void opSave::Undo()
+{
+	Graph* pGr = pControl->getGraph();
+	pGr->AddToUndoStack();
+}
+void opSave::Redo()
+{
+	Graph* pGr = pControl->getGraph();
+	pGr->AddtoShapeList();
+}

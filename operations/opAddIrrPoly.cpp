@@ -56,4 +56,15 @@ void opAdd_IIR_POLYGON::Execute()
 
 }
 
+void opAdd_IIR_POLYGON::Undo()
+{
+	Graph* pGr = pControl->getGraph();
+	pGr->AddToUndoStack();
+}
+void opAdd_IIR_POLYGON::Redo()
+{
+	Graph* pGr = pControl->getGraph();
+	pGr->AddtoShapeList();
+}
+
 

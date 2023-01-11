@@ -20,3 +20,14 @@ void Stick_Image::Execute()
 
 	}
 }
+
+void Stick_Image::Undo()
+{
+	Graph* pGr = pControl->getGraph();
+	pGr->AddToUndoStack();
+}
+void Stick_Image::Redo()
+{
+	Graph* pGr = pControl->getGraph();
+	pGr->AddtoShapeList();
+}

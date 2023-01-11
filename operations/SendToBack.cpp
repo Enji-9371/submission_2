@@ -11,3 +11,14 @@ void SendToBack::Execute()
 	pGraph->Sendtoback(pUI);
 	pUI->PrintMessage("Shape send to back");
 }
+
+void SendToBack::Undo()
+{
+	Graph* pGr = pControl->getGraph();
+	pGr->AddToUndoStack();
+}
+void SendToBack::Redo()
+{
+	Graph* pGr = pControl->getGraph();
+	pGr->AddtoShapeList();
+}
