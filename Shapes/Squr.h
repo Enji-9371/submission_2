@@ -27,6 +27,7 @@ public:
 	virtual shape* clone();
 	virtual shape* duplicate(GUI* pGUI);
 	int* Getshapeinfo();
+	void Scramble(int i, int j);
 	virtual bool point_included(int x, int y);
 	void OPZOOM(double px, double py, double scale);
 	void hideShape(GUI* pUI) override;

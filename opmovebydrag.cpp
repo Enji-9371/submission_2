@@ -31,7 +31,21 @@ void Move::Execute()
         }
 
     }
+
 }
+
+
+void Move::Undo()
+{
+    Graph* pGr = pControl->getGraph();
+    pGr->AddToUndoStack();
+}
+void Move::Redo()
+{
+    Graph* pGr = pControl->getGraph();
+    pGr->AddtoShapeList();
+}
+
 
 
 

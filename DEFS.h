@@ -61,7 +61,11 @@ enum operationType //The operations supported (you can add more if needed)
 	START,
 	HIDE,
 	UNHIDE,
+	SCRAMBLE,
+	DELETE_GROUP,
 	///TODO: Add more operation types (if needed)
+	UNDO,
+	REDO,
 };
 
 enum Shapes

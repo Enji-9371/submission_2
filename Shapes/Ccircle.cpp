@@ -179,3 +179,16 @@ void Ccircle::ResizeShape(double scale)  	//Resize a single regular polygon
 
 void Ccircle::RotateShape()  	//Circle cannot be rotated
 {}
+void Ccircle::Scramble(int i, int j)
+{
+
+	center.x = i;
+	center.y = j;
+
+	border.x = i + 50;
+	border.y = j;
+
+
+
+
+}

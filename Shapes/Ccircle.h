@@ -27,6 +27,6 @@ public:
 	void OPZOOM(double px, double py, double scale);
 	void ResizeShape(double scale);  	//Resize a single circle
 	void RotateShape();  	//Rotate a single circle
-	
+	void Scramble(int i, int j);
 };
 

@@ -24,11 +24,13 @@ public:
 	virtual void Move(Point P);
 	virtual shape* duplicate(GUI* pGUI);
 	virtual shape* clone();
+	void hideShape(GUI* pUI);
 	int* Getshapeinfo();
 	virtual bool point_included(int x, int y);
 	void OPZOOM(double px, double py, double scale);
 	void ResizeShape(double scale);  	//Resize a single ellipse
 	void RotateShape();  	//Rotate a single ellipse
+	void Scramble(int i, int j);
 
 };
 

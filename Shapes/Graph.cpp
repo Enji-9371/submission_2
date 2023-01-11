@@ -395,3 +395,96 @@ bool Graph::check_if_finished()  //check if the game is finished
 		return false;
 	}
 }
+void Graph::Scramble()
+{
+	int x[4][6] = { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 };
+	int temp1, temp2;
+	for (int i = 0; i < shapesList.size(); i++)
+	{
+		/*(200,150) (400, 150) (600, 150) (800, 150) (1000, 150) (1200, 150)
+		(200,300) (400, 300) (600, 300) (800, 300) (1000, 300) (1200, 300)
+		(200,450) (400, 450) (600, 450) (800, 450) (1000, 450) (1200, 450)
+		(200,450) (400, 450) (600, 450) (800, 450) (1000, 450) (1200, 450)*/
+
+		while (true)
+		{
+			temp1 = rand() % 5;
+			temp2 = rand() % 3;
+			if (x[temp2][temp1] == 0)
+				break;
+		}
+		x[temp2][temp1] = 1;
+		if (i < 5)
+		{
+			shapesList[i]->Scramble((temp1 + 1) * 200, (temp2 + 1) * 150);
+		}
+		else if (i < 11)
+		{
+			shapesList[i]->Scramble((temp1 + 1) * 200, (temp2 + 1) * 150);
+		}
+		else if (i < 17)
+		{
+			shapesList[i]->Scramble((temp1 + 1) * 200, (temp2 + 1) * 150);
+		}
+		else if (i < 23)
+		{
+			shapesList[i]->Scramble((temp1 + 1) * 200, (temp2 + 1) * 150);
+		}
+
+	}
+}
+void Graph::AddGroupNum(int i)
+{
+	for (int i = 0; i < shapesList.size(); i++)
+	{
+		if (shapesList[i]->IsSelected())
+		{
+			shapesList[i]->groupset(i);
+		}
+	}
+
+}
+
+void Graph::DeleteGroupNum(int i)
+{
+	for (int i = 0; i < shapesList.size(); i++)
+	{
+		if (shapesList[i]->groupget() == i)
+		{
+			shapesList[i]->groupset(0);
+		}
+	}
+
+}
+
+void Graph::DeleteGroup(int i)
+{
+	for (int i = 0; i < shapesList.size(); i++)
+	{
+		if (shapesList[i]->groupget() == i)
+		{
+			delete[] shapesList[i];
+			for (int j = i; j < i; j++)
+				shapesList[j] = shapesList[j + 1];
+		}
+	}
+}
+
+void Graph::AddToUndoStack()
+{
+	if (shapesList[shapesList.size() - 1]) // Excutes if there are 1+
+	{
+		UndoneShapes.push_back(shapesList[shapesList.size() - 1]);
+		shapesList.erase(shapesList.end() - 1);
+
+	}
+}
+
+void Graph::AddtoShapeList()
+{
+	if (UndoneShapes[UndoneShapes.size() - 1])
+	{
+		shapesList.push_back(UndoneShapes[UndoneShapes.size() - 1]);
+		UndoneShapes.erase(UndoneShapes.end() - 1);
+	}
+}

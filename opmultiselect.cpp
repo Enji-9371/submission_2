@@ -27,3 +27,14 @@ void MULTISELECT::Execute()
 	}
 
 }
+
+void MULTISELECT::Undo()
+{
+	Graph* pGr = pControl->getGraph();
+	pGr->AddToUndoStack();
+}
+void MULTISELECT::Redo()
+{
+	Graph* pGr = pControl->getGraph();
+	pGr->AddtoShapeList();
+}

@@ -27,7 +27,7 @@ public:
 	void SetHidden(bool s);
 	bool IsHidden();
 	bool IsSticked = false;
-
+	int group = 0;
 
 	virtual void Draw(GUI* pUI) const  = 0 ;		//Draw the shape
 
@@ -50,10 +50,12 @@ public:
 	virtual shape* clone() = 0;
 	virtual int* Getshapeinfo() = 0;
 	virtual void hideShape(GUI* pUI) = 0;
-
+	virtual void Scramble(int i, int j) = 0;
 	virtual void OPZOOM(double x, double y, double scale) = 0;   //virtual func. to zoom all shapes
 	virtual void ResizeShape(double scale) = 0;  	//Resize a single shape
 	virtual void RotateShape() = 0;  	//Rotate a single shape
+	void groupset(int i);
+	int groupget();
 	
 };
 

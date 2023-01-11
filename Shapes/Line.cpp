@@ -208,3 +208,12 @@ void Line::RotateShape()  	//Rotate a single line
 	Corner1.y = C1x + Center.y - Center.x;
 	Corner2.y = C2x + Center.y - Center.x;
 }
+void Line::Scramble(int i, int j)
+{
+    Corner2.y - 50;
+	Corner1.x = i;
+	Corner1.y = j;
+	Corner2.x = i + 100;
+	Corner2.y = j;
+
+}

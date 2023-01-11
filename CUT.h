@@ -13,6 +13,8 @@ public:
 
 	//Execute action (code depends on action type)
 	virtual void Execute();
+	virtual void Undo() override;
+	virtual void Redo() override;
 
 };
 

@@ -104,6 +104,10 @@ shape* irr_polygon::clone()
 	return newShape;
 }
 
+void irr_polygon::hideShape(GUI* pUI)
+{
+}
+
 bool irr_polygon::point_included(int x, int y) 
 {
 	double area = 0;
@@ -162,4 +166,7 @@ void irr_polygon::RotateShape()  	//Rotate a single irregular polygon
 		Array_X[i] = VERTIX_X;
 	}
 }
+void irr_polygon::Scramble(int i, int j)
+{
 
+}

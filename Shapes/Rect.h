@@ -22,6 +22,7 @@ public:
 	void hideShape(GUI* pUI) override;
 	virtual shape* duplicate(GUI* pGUI);
 	int* Getshapeinfo();
+	void Scramble(int i, int j);
 	void OPZOOM(double px, double py, double scale);
 	void ResizeShape(double scale);  	//Resize a single rectangle
 	void RotateShape();  	//Rotate a single rectangle

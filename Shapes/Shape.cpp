@@ -67,3 +67,11 @@ int shape::getID() const
 {
 	return ID;
 }
+void shape::groupset(int i)
+{
+	group = i;
+}
+int shape::groupget()
+{
+	return group;
+}

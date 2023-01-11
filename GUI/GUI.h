@@ -64,20 +64,20 @@ class GUI
 		ICON_LOAD,      // Load icon in menu
 		ICON_SAVE,      // Save icon in menu
 		ICON_MOVEBYDRAG,
+		ICON_SCRAMBLE,
 		ICON_DELETE,
 		ICON_DUPLICATE,
 		ICON_SELECT,
 		ICON_MULTISELECTION,
 		ICON_SENDTOBACK,
-
-
-		ICON_COPY,
+		ICON_UNDO,
+		ICON_REDO,
 		ICON_CUT ,
 		ICON_PASTE,
-		
+		ICON_DELETEGROUP,
 		ICON_PLAY,      //Play mode icon in menu
 		ICON_EXIT,		//Exit icon
-
+		ICON_COPY,
 		DRAW_ICON_COUNT		//no. of menu icons ==> This should be the last line in this enum
 
 	};
