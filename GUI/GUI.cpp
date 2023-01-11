@@ -1,4 +1,4 @@
-#include "GUI.h"
+ #include "GUI.h"
 #include <iostream>
 GUI::GUI()
 {
@@ -11,7 +11,7 @@ GUI::GUI()
 	wy = 5;
 	StatusBarHeight = 50;
 	ToolBarHeight = 65;
-	MenuIconWidth = 40;
+	MenuIconWidth = 35;
 
 	DrawColor = BLACK;	//default Drawing color
 	FillColor = GREEN;	//default Filling color
@@ -123,6 +123,10 @@ operationType GUI::GetUseroperation() const
 			case  ICON_DELETE: return DEL;  break;
 			case ICON_DUPLICATE: return DUPLICATED;  break;
 			case ICON_SIMAGE: return STICK; break;
+			case ICON_SCRAMBLE: return SCRAMBLE; break;
+			case ICON_DELETEGROUP: return DELETE_GROUP; break;
+			case ICON_UNDO: return UNDO; break;
+			case ICON_REDO: return REDO; break;
 			default: return EMPTY;	//A click on empty place in desgin toolbar
 			}
 		}
@@ -259,6 +263,11 @@ void GUI::CreateDrawToolBar()
 	MenuIconImages[ICON_DELETE] = "images\\MenuIcons\\DELETE.jpg";
 	MenuIconImages[ICON_SIMAGE] = "images\\MenuIcons\\image.jpg";
 	MenuIconImages[ICON_CUT] = "images\\MenuIcons\\cut.jpg";
+	MenuIconImages[ICON_UNDO] = "images\\MenuIcons\\Undo.jpg";
+	MenuIconImages[ICON_DELETEGROUP] = "images\\MenuIcons\\DeleteGroup.jpg";
+	MenuIconImages[ICON_REDO] = "images\\MenuIcons\\Redo.jpg";
+	MenuIconImages[ICON_SCRAMBLE] = "images\\MenuIcons\\Scramble.jpg";
+
 	//TODO: Prepare images for each menu icon and add it to the list
 
 	//Draw menu icon one image at a time

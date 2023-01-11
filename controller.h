@@ -3,7 +3,7 @@
 #include "DEFS.h"
 #include "Shapes/Graph.h"
 #include "GUI/GUI.h"
-
+#include <stack>
 class operation; //forward declaration
 
 //Main class that manages everything in the application.
@@ -20,6 +20,9 @@ private:
 	shape* shapesList[MaxshapesCount];	//List of all shapes (Array of pointers)
 	shape* Clipboard;
 	int ID;
+	stack<operation*> DoneStack; // Creating a stack called "Operations" to store the made operations
+	stack<operation*> UndoneStack;  // Creating another stack called UnDoneStack to store 
+
 
 public:	
 	int multiSelect;//enabling multiSelect
@@ -40,5 +43,13 @@ public:
 	GUI *GetUI() const; //Return pointer to the UI
 	void UpdateInterface() const;	//Redraws all the drawing window	
 	void UnSelectFigures(int mul) const;
+	void Undo();
+	void Redo();
+	void newOp(operation* newOp);
+
+	operation* PreviousDone();  // Returns a pointer to the last added operation to the stack
+	operation* PreviousUndone();		// Return a pointer to the last undone operation in the stack
+
 };
+
 

@@ -214,3 +214,17 @@ void Ctriangle::RotateShape()  	//Rotate a single triangle
 	Corner2.y = C2x + Center.y - Center.x;
 	Corner3.y = C3x + Center.y - Center.x;
 }
+void Ctriangle::Scramble(int i, int j)
+{
+	
+	double CenterX = (Corner1.x + Corner2.x + Corner3.x) / 3;
+	double CenterY = (Corner1.y + Corner2.y + Corner3.y) / 3;
+
+	Corner1.x = i;
+	Corner1.y = j + ((Corner1.y - CenterY) / j) * 50;
+	Corner2.x = i + ((Corner2.x - CenterX) / i) * 50;
+	Corner2.y = j + ((Corner2.y - CenterY) / j) * 50;
+	Corner3.x = i + ((Corner3.x - CenterX) / i) * 50;
+	Corner3.y = j + ((Corner3.y - CenterY) / j) * 50;
+
+}

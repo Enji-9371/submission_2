@@ -15,8 +15,8 @@
 #include"operations/ZoomIn.h"
 #include"operations/ZoomOut.h"
 #include "operations/Exit.h"
-//#include"operations/Group.h"
-//#include"operations/Ungroup.h"
+#include"operations/Group.h"
+#include"operations/Ungroup.h"
 #include"operations/Rotate.h"
 #include "operations\opsave.h"
 #include "operations/Copy.h"
@@ -35,6 +35,11 @@
 #include"CUT.h"
 #include "operations/Unhide.h"
 #include "operations/Load.h"
+#include "DeleteGroup.h"
+#include "Scramble.h"
+#include "opUndo.h"
+#include "opRedo.h"
+
 //Constructor
 controller::controller()
 {
@@ -61,34 +66,42 @@ operation* controller::createOperation(operationType OpType)
 	{
 		case DRAW_RECT:
 			pOp = new opAddRect(this);
+			newOp(pOp);
 			break;
 
 		case DRAW_TRI:
 			pOp = new opAddTriangle(this);
+			newOp(pOp);
 			break;
 
 		case DRAW_CIRC:
 			pOp = new opAddCircle(this);
+			newOp(pOp);
 			break;
 		
 		case DRAW_RPOLY:
 			pOp = new opAddREGPolygon(this); 
+			newOp(pOp);
 			break;
 
 		case DRAW_LINE:
 			pOp = new opAddLine(this);
+			newOp(pOp);
 			break;
 
 		case DRAW_SQUR:
 			pOp = new opAddSqur(this);
+			newOp(pOp);
 			break;
 
 		case DRAW_ELLIP:
 			pOp = new opAddEllip(this);
+			newOp(pOp);
 			break;
 
 		case DRAW_IRREGPOLY:
 			pOp = new opAdd_IIR_POLYGON(this);
+			newOp(pOp);
 			break;
 
 		case TO_DRAW:
@@ -131,17 +144,17 @@ operation* controller::createOperation(operationType OpType)
 			pOp = new opZoomOut(this);
 			break;
 
-		case RESIZE:   //resize
+			case RESIZE:   //resize
 			pOp = new opResize(this);
 			break;
 
-		//case GROUP:   //group
-		//	pOp = new opGroup(this);
-		//	break;
+			case GROUP:   //group
+			pOp = new opGroup(this);
+			break;
 
-		//case UNGROUP:   //ungroup
-		//	pOp = new opUngroup(this);
-		//	break;
+			case UNGROUP:   //ungroup
+			pOp = new opUngroup(this);
+			break;
 
 		case STICK:
 			pOp = new Stick_Image(this);
@@ -175,7 +188,7 @@ operation* controller::createOperation(operationType OpType)
 			pOp = new cut(this); 
 			break; 
 
-			case DEL:
+		case DEL:
 			pOp = new opdelete(this);
 			break;
 
@@ -202,6 +215,19 @@ operation* controller::createOperation(operationType OpType)
 
 		case EXIT:
 			pOp = new Exit(this);
+			break;
+
+		case SCRAMBLE:
+			pOp = new opScramble(this);
+			break;
+		case UNDO:
+			pOp = new opUndo(this);
+			break;
+		case REDO:
+			pOp = new opRedo(this);
+			break;
+		case DELETE_GROUP:
+			pOp = new DeleteGroup(this);
 			break;
 
 		
@@ -305,3 +331,57 @@ void controller::UnSelectFigures(int mul) const
 	}
 };
 
+operation* controller::PreviousUndone()
+{
+	if (!UndoneStack.empty())
+	{
+		return UndoneStack.top();
+	}
+	else
+	{
+		return nullptr;
+		// No operations in the undone stack
+	}
+}
+
+operation* controller::PreviousDone() {
+	if (DoneStack.empty())
+	{
+		return nullptr;
+		// No Actions in the Done Stack
+	}
+	else
+	{
+		return  DoneStack.top();
+	}
+}
+
+
+
+void controller::newOp(operation* newOperation)
+{
+	if (newOperation)
+	{
+		DoneStack.push(newOperation);
+	}
+}
+
+
+void controller::Undo()
+{
+	if (PreviousDone())
+	{
+		UndoneStack.push(PreviousDone());
+		DoneStack.pop();
+	}
+
+}
+
+void controller::Redo()
+{
+	if (PreviousUndone())
+	{
+		DoneStack.push(PreviousUndone());
+		UndoneStack.pop();
+	}
+}

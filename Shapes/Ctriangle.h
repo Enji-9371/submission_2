@@ -28,6 +28,7 @@ public:
 	virtual void Move(Point P);
 	void OPZOOM(double px, double py, double scale);
 	void ResizeShape(double scale);  	//Resize a single triangle
-	void RotateShape();  	//rotate a single triangle
+	void RotateShape(); 
+	void Scramble(int i, int j);
 };
 

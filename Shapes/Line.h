@@ -21,6 +21,7 @@ public:
 	virtual void Draw(GUI* pUI) const;
 	void OPZOOM(double px, double py, double scale);
 	Line(const Line* copy);
+	void Scramble(int i, int j);
 	virtual shape* clone();
 	void hideShape(GUI* pUI) override;
 	virtual shape* duplicate(GUI* pGUI);

@@ -188,3 +188,10 @@ void Squr::ResizeShape(double scale)  	//Resize a single squre
 
 void Squr::RotateShape()  	//square cannot be rotated
 {}
+void Squr::Scramble(int i, int j)
+{
+	Corner1.x = i - 50;
+	Corner1.y = j - 50;
+	Corner2.x = i + 50;
+	Corner2.y = j + 50;
+}

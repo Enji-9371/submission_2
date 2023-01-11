@@ -241,3 +241,13 @@ void polygon::RotateShape()  	//Rotate a single regular polygon
 		arrayX[i] = VERTIX_X;
 	}
 }
+void polygon::Scramble(int i, int j)
+{
+	int temp1 = (rand() % 1000);
+	int temp2 = (rand() % 500);
+	center.x = i;
+	center.y = j;
+	point1.x = i + 150;
+	point1.y = j;
+
+}

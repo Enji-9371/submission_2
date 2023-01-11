@@ -204,3 +204,12 @@ void Rect::RotateShape()  	//Rotate a single rectangle
 	Corner2.y = C2x + Center.y - Center.x;
 
 }
+void Rect::Scramble(int i, int j)
+{
+	
+	Corner1.x = i - 80;
+	Corner1.y = j - 40;
+	Corner2.x = i + 80;
+	Corner2.y = j + 40;
+
+}

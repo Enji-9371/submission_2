@@ -16,6 +16,8 @@ private:
 	shape* selectedShape;	//pointer to the currently selected shape
 	shape* copiedShape;
 	vector <shape*> clipboard;
+	vector <shape*> UndoneShapes;					   
+
 	int size = 0;
 public:										
 	Graph();
@@ -34,8 +36,10 @@ public:
 	void clearClipboard();
 	void Hide_shapes(GUI* pUI);
 	void Unhide_shapes(GUI* pUI);
-
-
+	void Scramble();
+	void AddGroupNum(int i);
+	void DeleteGroupNum(int i);
+	void DeleteGroup(int i);
 	void copy();
 	void paste(Point p);
     void Save(ofstream& outfile);	//Save all shapes to a file
@@ -50,4 +54,8 @@ public:
 	bool MATCH(shape* shape1, shape* shape2);
 	void HIDEALL();
 	bool check_if_finished();  //check if the game is finished
+	void AddToUndoStack();
+	void AddtoShapeList();
+	bool isSaved = false;
+
 };

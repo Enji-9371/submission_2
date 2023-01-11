@@ -33,3 +33,13 @@ void opSelect::Execute()
 	}
 
 }
+void opSelect::Undo()
+{
+	Graph* pGr = pControl->getGraph();
+	pGr->AddToUndoStack();
+}
+void opSelect::Redo()
+{
+	Graph* pGr = pControl->getGraph();
+	pGr->AddtoShapeList();
+}
